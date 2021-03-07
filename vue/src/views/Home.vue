@@ -1,12 +1,70 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+  <div class="Home">
+    <div class="large-12 medium-12 small-12 cell">
+      <label>File
+        <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+      </label>
+      <button v-on:click="submitFile()">Submit</button>
+    </div>
+    <div id="file">
+      <img :src="file" />
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "home"
-};
+  import PhotoService from "../services/PhotoService.js"
+  export default {
+    /*
+      Defines the data used by the component
+*/
+    data(){
+      return {
+        file: 'images/ggb.jpg'
+      }
+    },
+    methods: {
+          
+
+      /*
+        Submits the file to the server
+      */
+      submitFile(){
+        /*
+                Initialize the form data
+            */
+            let formData = new FormData();
+
+            /*
+                Add the form data we need to submit
+            */
+            formData.append('file', this.file);
+
+        /*
+          Make the request to the POST /single-file URL
+        */
+       // /Users/aprilhoward/Desktop/finalcapstone/final-capstone-team-merge-conflict/vue/src/store
+            PhotoService.http.post( '/vue/source/store',
+                formData,
+                {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+              }
+            ).then(function(){
+          console.log('SUCCESS!!');
+        })
+        .catch(function(){
+          console.log('FAILURE!!');
+        });
+      },
+
+      /*
+        Handles a change on the file upload
+      */
+      handleFileUpload(){
+        this.file = this.$refs.file.files[0];
+      }
+    }
+  }
 </script>
