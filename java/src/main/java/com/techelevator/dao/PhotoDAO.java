@@ -10,6 +10,6 @@ public interface PhotoDAO {
 	
 	Photo getPhotoById(int photoId);
 	
-	boolean create(Photo newPhoto);
+	boolean create(String fileName, String link, String caption);
 	
 }

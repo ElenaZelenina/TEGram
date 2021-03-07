@@ -7,7 +7,7 @@ public class Photo {
 	private String fileName;
 	private String link;
 	private String caption;
-	private int likeCount;
+	private int likesCount;
 	private Date dateTime;
 
 	public int getId() {
@@ -42,12 +42,12 @@ public class Photo {
 		this.caption = caption;
 	}
 
-	public int getLikeCount() {
-		return likeCount;
+	public int getLikesCount() {
+		return likesCount;
 	}
 
-	public void setLikeCount(int likeCount) {
-		this.likeCount = likeCount;
+	public void setLikesCount(int likeCount) {
+		this.likesCount = likeCount;
 	}
 
 	public Date getDateTime() {
