@@ -2,12 +2,13 @@
   <div class="Home">
     <div class="large-12 medium-12 small-12 cell">
       <label>File
-        <input type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+        <input type="file" id="file" ref="file" 
+          v-on:change="handleFileUpload"/>
       </label>
-      <button v-on:click="submitFile()">Submit</button>
+      <button v-on:click="submitFile">Submit</button>
     </div>
     <div id="file">
-      <img :src="file" />
+      <img id="imageView" />
     </div>
   </div>
 </template>
@@ -20,7 +21,7 @@
 */
     data(){
       return {
-        file: 'images/ggb.jpg'
+        files: null
       }
     },
     methods: {
@@ -38,13 +39,13 @@
             /*
                 Add the form data we need to submit
             */
-            formData.append('file', this.file);
+            formData.append('file', this.files[0]);
 
         /*
           Make the request to the POST /single-file URL
         */
        // /Users/aprilhoward/Desktop/finalcapstone/final-capstone-team-merge-conflict/vue/src/store
-            PhotoService.http.post( '/vue/source/store',
+            PhotoService.create( '/vue/source/store',
                 formData,
                 {
                 headers: {
@@ -62,8 +63,14 @@
       /*
         Handles a change on the file upload
       */
-      handleFileUpload(){
-        this.file = this.$refs.file.files[0];
+      handleFileUpload(event){
+        console.log('event', event)
+        this.files = event.target.files;
+        const imageView = document.getElementById('imageView');
+        imageView.src = URL.createObjectURL(this.files[0]);
+        imageView.onLoad = ()=>{
+          URL.revokeObjectURL(output.src)
+        }
       }
     }
   }

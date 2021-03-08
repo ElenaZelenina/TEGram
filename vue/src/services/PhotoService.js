@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const http = axios.create({
-  baseURL: "http://localhost:8081"
+  baseURL: "http://localhost:8080"
 });
 
 
@@ -16,7 +16,7 @@ export default {
   },
 
   create(doc) {
-    return http.post(`/docs/`, doc);
+    return http.post(`/photos`, doc);
   },
   update(id, doc) {
     return http.put(`/docs/${id}`, doc);
