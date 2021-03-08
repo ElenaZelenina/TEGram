@@ -37,8 +37,7 @@
       submitFile(){
        
           
-       // /Users/aprilhoward/Desktop/finalcapstone/final-capstone-team-merge-conflict/vue/src/store
-            s3Service.uploadToS3(this.files[0])
+            s3Service.uploadToS3('aphoward', this.files[0])
             .then(function(){
           console.log('SUCCESS!!');
         })
