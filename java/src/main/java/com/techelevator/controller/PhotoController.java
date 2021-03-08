@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+
 import java.security.Principal;
 
 import javax.validation.Valid;
@@ -32,4 +33,5 @@ public class PhotoController {
 		photoAdded = photoDAO.create(request.getFileName(), request.getLink(), request.getCaption());		
 		return photoAdded;
 	}
+
 }
