@@ -7,9 +7,11 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Service;
 
 import com.techelevator.model.Photo;
 
+@Service
 public class PhotoSqlDAO implements PhotoDAO {
 	
 	private static final int INITIAL_LIKES_COUNT = 0;
@@ -46,19 +48,20 @@ public class PhotoSqlDAO implements PhotoDAO {
 	}
 
 	@Override
-	public boolean create(String fileName, String link, String caption) {
+	public boolean create(int user_id, String fileName, String link, String caption) {
 		boolean photoCreated = false;
 		
 		LocalDateTime dateTime = LocalDateTime.now();
-		String insertPhoto = "INSERT INTO photo (file_name, link, caption, likes_count, date_time) "
-				+ "VALUES (?, ?, ?, ?, ?)";
+		String insertPhoto = "INSERT INTO photo (user_id, file_name, link, caption, likes_count, date_time) "
+				+ "VALUES (?, ?, ?, ?, ?, ?)";
 		photoCreated = jdbcTemplate.update(con -> {
 			PreparedStatement ps = con.prepareStatement(insertPhoto);
-			ps.setString(1, fileName);
-			ps.setString(2, link);
-			ps.setString(3, caption);
-			ps.setInt(4, INITIAL_LIKES_COUNT);
-			ps.setObject(5, dateTime);			
+			ps.setInt(1, user_id);
+			ps.setString(2, fileName);
+			ps.setString(3, link);
+			ps.setString(4, caption);
+			ps.setInt(5, INITIAL_LIKES_COUNT);
+			ps.setObject(6, dateTime);			
 			return ps;
 		}) == 1;		
 		
@@ -68,6 +71,7 @@ public class PhotoSqlDAO implements PhotoDAO {
 	private Photo mapRowToPhoto(SqlRowSet rs) {
 		Photo photo = new Photo();
 		photo.setId(rs.getInt("photo_id"));
+		photo.setUserId(rs.getInt("user_id"));
 		photo.setFileName(rs.getString("file_name"));
 		photo.setLink(rs.getString("link"));
 		photo.setCaption(rs.getString("caption"));

@@ -24,6 +24,7 @@ export default {
   },
 
   create(doc) {
+    console.log('Doc', doc);
     return http.post(`/photos`, doc);
   },
   update(id, doc) {
