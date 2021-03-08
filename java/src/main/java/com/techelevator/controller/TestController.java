@@ -17,7 +17,7 @@ import com.techelevator.dao.UserDAO;
 import com.techelevator.model.PhotoRequest;
 
 @RestController
-@CrossOrigin
+@CrossOrigin()
 public class TestController {
 
 	private PhotoDAO photoDAO;
