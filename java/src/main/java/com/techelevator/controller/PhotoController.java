@@ -15,5 +15,6 @@ public class PhotoController {
     @PostMapping("/")
     public ResponseEntity<String> createPhoto() {
         return new ResponseEntity<>("ok", HttpStatus.OK);
+        // TODO come back to complete
     }
 }
