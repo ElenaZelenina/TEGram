@@ -11,6 +11,14 @@ export default {
     return http.get('/docs');
   },
 
+  getPresignedUrl(fileName, fileType) {
+    return http.get('/photos/uploadCredentials', {
+      params:{
+        keyName: fileName,
+        contentType: fileType
+      }
+    });
+  },
   get(id) {
     return http.get(`/docs/${id}`)
   },
