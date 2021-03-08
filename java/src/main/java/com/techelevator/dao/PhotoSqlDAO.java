@@ -7,9 +7,11 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Service;
 
 import com.techelevator.model.Photo;
 
+@Service
 public class PhotoSqlDAO implements PhotoDAO {
 	
 	private static final int INITIAL_LIKES_COUNT = 0;
