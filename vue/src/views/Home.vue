@@ -1,7 +1,8 @@
 <template>
-  <div class="Home">
+  <div class="Photo Page">
+    <body>
     <div class="large-12 medium-12 small-12 cell">
-      <label>File
+      <label>File:
         <input type="file" id="file" ref="file" 
           v-on:change="handleFileUpload"/>
       </label>
@@ -10,11 +11,16 @@
     <div id="file">
       <img id="imageView" />
     </div>
+    </body>
+    
   </div>
+  
+  
 </template>
 
 <script>
-  import PhotoService from "../services/PhotoService.js"
+  import s3Service from "../services/S3Service"
+ // import PhotoService from "../services/PhotoService"
   export default {
     /*
       Defines the data used by the component
@@ -25,41 +31,20 @@
       }
     },
     methods: {
-          
-
       /*
         Submits the file to the server
       */
       submitFile(){
-        /*
-                Initialize the form data
-            */
-            let formData = new FormData();
-
-            /*
-                Add the form data we need to submit
-            */
-            formData.append('file', this.files[0]);
-
-        /*
-          Make the request to the POST /single-file URL
-        */
-       // /Users/aprilhoward/Desktop/finalcapstone/final-capstone-team-merge-conflict/vue/src/store
-            PhotoService.create( '/vue/source/store',
-                formData,
-                {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-              }
-            ).then(function(){
+       
+          
+            s3Service.uploadToS3('aphoward', this.files[0])
+            .then(function(){
           console.log('SUCCESS!!');
         })
         .catch(function(){
           console.log('FAILURE!!');
         });
       },
-
       /*
         Handles a change on the file upload
       */
@@ -75,3 +60,29 @@
     }
   }
 </script>
+
+<style scoped>
+
+input {
+  background-color: #00ADEE;
+  }
+div {
+  margin: auto;
+  color: white;
+  background-color: #00ADEE;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+button {
+  color: white;
+  background-color: #8CC63F;
+  padding: 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  display: flex;
+  justify-content: center;
+
+}
+</style>

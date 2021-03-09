@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Upload from '../views/Upload.vue'
+import PhotoFeed from '../components/PhotoFeed'
 
 Vue.use(Router)
 
@@ -33,7 +34,10 @@ const router = new Router({
     {
       path: "/login",
       name: "login",
-      component: Login,
+      components: {
+        default: Login,
+        helper: PhotoFeed
+      },
       meta: {
         requiresAuth: false
       }

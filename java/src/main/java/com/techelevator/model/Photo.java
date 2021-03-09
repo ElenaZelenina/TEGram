@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Photo {
 	private int id;
+	private int userId;
 	private String fileName;
 	private String link;
 	private String caption;
@@ -57,6 +58,14 @@ public class Photo {
 	public void setDateTime(Date dateTime) {
 		this.dateTime = dateTime;
 	}
-	
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	
 }

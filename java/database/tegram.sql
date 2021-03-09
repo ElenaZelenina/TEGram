@@ -12,6 +12,7 @@ CREATE SEQUENCE seq_photo_id
 
 CREATE TABLE photo (
 	photo_id int DEFAULT nextval('seq_photo_id'::regclass) NOT NULL,
+	user_id int NOT NULL,
 	file_name varchar(250) NOT NULL,
 	link varchar(250) NOT NULL,
 	caption varchar(250) NOT NULL,
