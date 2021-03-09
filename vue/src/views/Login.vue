@@ -1,5 +1,6 @@
 <template>
   <div id="login">
+    <photo-feed></photo-feed>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="title is-3">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -41,10 +42,13 @@
 
 <script>
 import authService from "../services/AuthService";
+import PhotoFeed from "../components/PhotoFeed";
 
 export default {
   name: "login",
-  components: {},
+  components: {
+    PhotoFeed
+  },
   data() {
     return {
       user: {

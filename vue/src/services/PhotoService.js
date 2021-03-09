@@ -8,7 +8,7 @@ const http = axios.create({
 export default {
 
   list() {
-    return http.get('/docs');
+    return http.get('/allphotos');
   },
 
   getPresignedUrl(fileName, fileType) {
