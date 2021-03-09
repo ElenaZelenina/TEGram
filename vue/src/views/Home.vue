@@ -2,7 +2,7 @@
   <div class="Photo Page">
     <body>
     <div class="large-12 medium-12 small-12 cell">
-      <label>File
+      <label>File:
         <input type="file" id="file" ref="file" 
           v-on:change="handleFileUpload"/>
       </label>
@@ -20,7 +20,7 @@
 
 <script>
   import s3Service from "../services/S3Service"
-  import PhotoService from "../services/PhotoService"
+ // import PhotoService from "../services/PhotoService"
   export default {
     /*
       Defines the data used by the component
@@ -62,19 +62,27 @@
 </script>
 
 <style scoped>
+
 input {
   background-color: #00ADEE;
-}
-
+  }
 div {
-  margin: auto 20px;
+  margin: auto;
   color: white;
   background-color: #00ADEE;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
-
 button {
   color: white;
   background-color: #8CC63F;
-}
+  padding: 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  display: flex;
+  justify-content: center;
 
+}
 </style>
