@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <photo-feed class="photof" v-bind:photos="photos"></photo-feed>
+    <carousel class="photof" v-bind:photos="photos"></carousel>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="title is-3">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -42,13 +42,13 @@
 
 <script>
 import authService from "../services/AuthService";
-import PhotoFeed from "../components/PhotoFeed";
+import Carousel from "../components/Carousel";
 import photoService from "../services/PhotoService";
 
 export default {
   name: "login",
   components: {
-    PhotoFeed
+    Carousel
   },
   data() {
     return {

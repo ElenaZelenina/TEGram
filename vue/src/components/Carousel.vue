@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "photo-feed",
+  name: "carousel",
   props: ["photos"],
   data() {
     return {

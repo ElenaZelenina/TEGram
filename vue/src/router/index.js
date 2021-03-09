@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Upload from '../views/Upload.vue'
-import PhotoFeed from '../components/PhotoFeed'
+import Carousel from '../components/Carousel'
 
 Vue.use(Router)
 
@@ -36,7 +36,7 @@ const router = new Router({
       name: "login",
       components: {
         default: Login,
-        helper: PhotoFeed
+        helper: Carousel
       },
       meta: {
         requiresAuth: false
