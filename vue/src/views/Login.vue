@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <photo-feed v-bind:photos="photos"></photo-feed>
+    <photo-feed class="photof" v-bind:photos="photos"></photo-feed>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="title is-3">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -92,9 +92,9 @@ export default {
 };
 </script>
 <style scoped>
-.form-signin {
+.form-signin .photof {
   width: 100%;
-  max-width: 600px;
+  max-width: 500px;
 }
 
 #login {
