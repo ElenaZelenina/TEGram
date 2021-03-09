@@ -64,7 +64,7 @@ CREATE SEQUENCE seq_like_id
   CACHE 1;
 
 
-CREATE TABLE like (
+CREATE TABLE "like" (
 	--comment_id int DEFAULT nextval('seq_comment_id'::regclass) NOT NULL,
 	photo_id int NOT NULL,
 	user_id int NOT NULL,
@@ -72,11 +72,11 @@ CREATE TABLE like (
 	CONSTRAINT PK_user_photo PRIMARY KEY(user_id, photo_id)
 );
 
-SELECT * FROM like;
+SELECT * FROM "like";
 
-ROLLBACK;
+COMMIT;
 
-SELECT * FROM like;
+SELECT * FROM "like";
 
 
 
