@@ -4,6 +4,7 @@
       <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo">
       <router-link v-bind:to="{ name: 'home' }" class="navbar-item">Home</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="navbar-item">Logout</router-link>
+      <img class="navbar-stack" src="../public/Copy of Stacked logo.png" alt="stacked logo">
     </div>
     <router-view />
   </div>
@@ -24,5 +25,11 @@ img .navbar-brand {
   }
   #app {
     background-color: #999999;
+  }
+  .navbar-stack {
+    display: flex;
+    justify-content: center;
+    margin-left: 20%;
+    padding: auto;
   }
 </style>
