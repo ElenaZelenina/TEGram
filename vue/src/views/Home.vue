@@ -62,30 +62,27 @@
 </script>
 
 <style scoped>
+
 input {
   background-color: #00ADEE;
-}
-
+  }
 div {
-  margin: auto 20px;
+  margin: auto;
   color: white;
   background-color: #00ADEE;
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap;
   align-items: baseline;
 }
-
 button {
   color: white;
   background-color: #8CC63F;
-  padding: 20px;
-  border-radius: 20px;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
   display: flex;
   justify-content: center;
 
 }
-
 </style>

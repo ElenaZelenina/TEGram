@@ -10,12 +10,19 @@
 </template>
 
 <style scoped>
+
 #nav {
   display: flex;
-  height: 50px;
-  
-}
-.navbar-brand {
-  height: 30px;
-}
+  height: auto;
+  align-items: flex-end;
+  }
+img .navbar-brand {
+  display: flex;
+  }
+.navbar-item{
+  display: flex;
+  }
+  #app {
+    background-color: #999999;
+  }
 </style>
