@@ -1,6 +1,8 @@
 package com.techelevator.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -14,10 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.PhotoDAO;
 import com.techelevator.dao.UserDAO;
+import com.techelevator.model.Photo;
 import com.techelevator.model.PhotoRequest;
 
 @RestController
-@CrossOrigin
+@CrossOrigin()
 public class TestController {
 
 	private PhotoDAO photoDAO;
@@ -36,4 +39,11 @@ public class TestController {
 		photoAdded = photoDAO.create(userId, request.getFileName(), request.getLink(), request.getCaption());		
 		return photoAdded;
 	}
+	    
+    @RequestMapping(path = "/allphotos", method = RequestMethod.GET)
+    public List<Photo> getAll() {
+    	List<Photo> photos = new ArrayList<>();
+    	photos = photoDAO.findAll();
+    	return photos;
+    }
 }
