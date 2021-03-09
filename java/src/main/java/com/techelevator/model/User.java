@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class User {
 
-   private Long id;
+   private int id;
    private String username;
    @JsonIgnore
    private String password;
@@ -18,19 +18,19 @@ public class User {
 
    public User() { }
 
-   public User(Long id, String username, String password, String authorities) {
+   public User(int id, String username, String password, String authorities) {
       this.id = id;
       this.username = username;
       this.password = password;
       this.activated = true;
    }
 
-   public Long getId() {
+   public int getId() {
       return id;
    }
 
-   public void setId(Long id) {
-      this.id = id;
+   public void setId(int i) {
+      this.id = i;
    }
 
    public String getUsername() {
