@@ -23,6 +23,9 @@ export default new Vuex.Store({
     photos: []
   },
   mutations: {
+    SET_PHOTOS(state, data) {
+      state.photos = data;
+    },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);

@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <photo-feed></photo-feed>
+    <photo-feed v-bind:photos="photos"></photo-feed>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="title is-3">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -43,6 +43,7 @@
 <script>
 import authService from "../services/AuthService";
 import PhotoFeed from "../components/PhotoFeed";
+import photoService from "../services/PhotoService";
 
 export default {
   name: "login",
@@ -56,9 +57,19 @@ export default {
         password: "",
       },
       invalidCredentials: false,
+      photos: []
     };
   },
+  created() {
+    this.getPhotos();
+  },
   methods: {
+    getPhotos() {
+      photoService.list().then((response) => {
+        this.$store.commit("SET_PHOTOS", response.data);
+        this.photos = response.data;
+      });
+    },
     login() {
       authService
         .login(this.user)

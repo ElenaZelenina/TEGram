@@ -20,7 +20,7 @@
 
 <script>
   import s3Service from "../services/S3Service"
-  import PhotoService from "../services/PhotoService"
+ // import PhotoService from "../services/PhotoService"
   export default {
     /*
       Defines the data used by the component

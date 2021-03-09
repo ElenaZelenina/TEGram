@@ -1,13 +1,12 @@
 <template>
     <section>
-        <h1>PhotoFeed</h1>
         <b-image
         class="photo"
         v-for="photo in photos"
         v-bind:key="photo.id"
-            src="photo.link"
+            v-bind:src="photo.link"
             webp-fallback=".jpg"
-            ratio="16by9"
+            ratio="240by200"
         >{{photo.link}}</b-image>
         <br>
     </section>
