@@ -8,10 +8,14 @@
     <router-view />
   </div>
 </template>
+
 <style scoped>
 #nav {
   display: flex;
   height: 50px;
-
+  
+}
+.navbar-brand {
+  height: 30px;
 }
 </style>

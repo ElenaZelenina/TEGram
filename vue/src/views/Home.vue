@@ -2,7 +2,7 @@
   <div class="Photo Page">
     <body>
     <div class="large-12 medium-12 small-12 cell">
-      <label>File
+      <label>File:
         <input type="file" id="file" ref="file" 
           v-on:change="handleFileUpload"/>
       </label>
@@ -70,11 +70,22 @@ div {
   margin: auto 20px;
   color: white;
   background-color: #00ADEE;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: baseline;
 }
 
 button {
   color: white;
   background-color: #8CC63F;
+  padding: 20px;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  display: flex;
+  justify-content: center;
+
 }
 
 </style>
