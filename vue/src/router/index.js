@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Upload from '../views/Upload.vue'
 import Carousel from '../components/Carousel'
+import PhotoFeed from '../views/PhotoFeed'
 
 Vue.use(Router)
 
@@ -64,6 +65,14 @@ const router = new Router({
       component: Upload,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: '/photofeed',
+      name: 'photofeed',
+      component: PhotoFeed,
+      meta: {
+        requiresAuth: false
       }
     }
   ]
