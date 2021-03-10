@@ -68,8 +68,8 @@ const router = new Router({
       }
     },
     {
-      path: '/photofeed',
-      name: 'photofeed',
+      path: '/photos',
+      name: 'photo-feed',
       component: PhotoFeed,
       meta: {
         requiresAuth: false

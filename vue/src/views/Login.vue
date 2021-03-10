@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <carousel class="photof" v-bind:photos="photos"></carousel>
+    <carousel class="carousel" v-bind:photos="photos"></carousel>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="title is-3">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -92,7 +92,7 @@ export default {
 };
 </script>
 <style scoped>
-.form-signin .photof {
+.form-signin .carousel {
   width: 100%;
   max-width: 500px;
 }
