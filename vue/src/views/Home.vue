@@ -7,9 +7,15 @@
         <input type="file" id="file" ref="file"
           v-on:change="handleFileUpload"/>
       </label>
+       
+       <a id="show-submit-button"
+     href="#"
+     v-if="showButton === true"
+     v-on:click.prevent="showButton = true">
+     </a>
+
       <button 
-      
-      v-on:click.prevent="submitFile" v-if="handleFileUpload === true">Submit</button>
+      v-on:event.prevent="submitFile" v-if="showButton === true">Submit</button>
 
     </div>
     
