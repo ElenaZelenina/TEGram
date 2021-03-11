@@ -2,7 +2,7 @@
   <section>
     <b-carousel>
       <b-carousel-item v-for="(photo, i) in photos" :key="i">
-        <section :class="hero">
+        <section class="hero">
           <div class="hero-body">
             <b-image
               class="photo"
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "photo-feed",
+  name: "carousel",
   props: ["photos"],
   data() {
     return {
