@@ -1,11 +1,19 @@
 package com.techelevator.model;
 
 public class PhotoRequest {
-	
+	private Integer userId;
 	private String fileName;
 	private String link; 
 	private String caption;
-	
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
 	public String getFileName() {
 		return fileName;
 	}
@@ -24,5 +32,5 @@ public class PhotoRequest {
 	public void setCaption(String caption) {
 		this.caption = caption;
 	}
-	
+
 }

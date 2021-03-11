@@ -10,6 +10,14 @@
     </div>
     <div id="file">
       <img id="imageView" />
+      <label>
+        caption
+        <textarea id="caption" name="caption" 
+          v-if="files!=null" v-on:change="handleCaptionChanged"
+          v-model="caption"
+        ></textarea>
+
+      </label>
     </div>
     </body>
     
@@ -19,43 +27,88 @@
 </template>
 
 <script>
-  import s3Service from "../services/S3Service"
- // import PhotoService from "../services/PhotoService"
-  export default {
+import PhotoService from '../services/PhotoService';
+import s3Service from "../services/S3Service"
+
+export default {
     /*
       Defines the data used by the component
 */
     data(){
       return {
-        files: null
+        files: null,
+        caption: ""
       }
     },
     methods: {
       /*
         Submits the file to the server
+        async chains promises - calls a chain
+        of then functions, returns promise in the callbacks
+        in the then function
       */
-      submitFile(){
-       
-          
-            s3Service.uploadToS3('aphoward', this.files[0])
-            .then(function(){
-          console.log('SUCCESS!!');
-        })
-        .catch(function(){
-          console.log('FAILURE!!');
-        });
+      async submitFile(){  
+        try {
+          // upload this photo to S3
+          const s3Resp = await s3Service.uploadToS3(
+            'aphoward', this.files[0]);
+          /*
+           gather the photo metadata (photo_id, fileName, link, caption)
+           the following consts gives us each part of the data to send to our database.
+           user ID from VUEX store--gets our current user -- see in inspect window, it return a user id
+          */
+          const userId = this.$store.state.user.id;
+          // fileName 
+          const fileName = this.files[0].name;
+          // get the S3 link from the response
+          // inspect: link shows url +? and then more binary. parse
+          const link = s3Resp.config.baseURL.split('?')[0];
+          const caption = this.caption;
+
+          const photoMetadata = {
+             userId, fileName, link, caption
+          };
+
+          // send the metadata to the backend to store in PosgresSQL DB
+          console.log('sending photo metadata', photoMetadata);
+          const metaResp = await PhotoService.create(photoMetadata);
+           
+          console.log('SUCCESS!!', link);
+        }
+        catch(err){
+          console.log('FAILURE!!', err);
+        }
       },
       /*
         Handles a change on the file upload
       */
+     
+       handleFileUpload(){
+        //console.log('event', event)
+        this.files = event.target.files;
+        const imageView = document.getElementById('imageView');
+        imageView.src = URL.createObjectURL(this.files[0]);
+        imageView.onLoad = ()=>{
+          URL.revokeObjectURL()
+        }
+      },
+    /** 
       handleFileUpload(event){
-        console.log('event', event)
+        //console.log('event', event)
         this.files = event.target.files;
         const imageView = document.getElementById('imageView');
         imageView.src = URL.createObjectURL(this.files[0]);
         imageView.onLoad = ()=>{
           URL.revokeObjectURL(output.src)
         }
+      },
+       
+      
+      //  Handles a change to the caption
+   */
+      handleCaptionChanged(event) {
+        //console.log(event.target)
+       // this.caption = event.target.value;
       }
     }
   }
