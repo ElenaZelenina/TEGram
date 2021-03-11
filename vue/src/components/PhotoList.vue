@@ -10,6 +10,7 @@
         ></b-image>
         <p class="caption">{{photo.caption}}</p>
         </router-link>
+        
     </section>
 </template>
 
