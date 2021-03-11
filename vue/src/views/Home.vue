@@ -9,7 +9,7 @@
       </label>
       <button 
       
-      v-on:click.prevent="submitFile" v-if="handleFileUpload === true">Submit</button>
+      v-on:click.prevent="submitFile">Submit</button>
 
     </div>
     
