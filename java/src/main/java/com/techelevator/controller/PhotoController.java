@@ -1,15 +1,18 @@
 package com.techelevator.controller;
+
 import com.techelevator.dao.PhotoDAO;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.model.PhotoRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.S3Exception;
 import software.amazon.awssdk.services.s3.presigner.model.PresignedPutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignRequest;
+
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.Duration;
@@ -20,10 +23,12 @@ public class PhotoController {
    TestController testController;
     private final PhotoDAO photoDAO;
     private final UserDAO userDAO;
+
     public PhotoController(PhotoDAO photoDAO, UserDAO userDAO) {
         this.photoDAO = photoDAO;
         this.userDAO = userDAO;
     }
+
 //     this gets the correct data, but doesn't send to db
 //    @ResponseStatus(HttpStatus.CREATED)
 //    @RequestMapping(path = "", method = RequestMethod.POST)
@@ -33,6 +38,7 @@ public class PhotoController {
 //        return photoDAO.create(userId, request.getFileName(), request.getLink(), request.getCaption());
 //
 //    }
+
 //    @ResponseStatus(HttpStatus.CREATED)
 //    @RequestMapping(path = "", method = RequestMethod.POST)
 //    public boolean addPhoto(@Valid @RequestBody PhotoRequest request, Principal principal) {
@@ -41,6 +47,7 @@ public class PhotoController {
 //        photoAdded = photoDAO.create(userId, request.getFileName(), request.getLink(), request.getCaption());
 //        return photoAdded;
 //    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     public ResponseEntity<String> createPhoto(@Valid @RequestBody PhotoRequest getPhotoData) {
@@ -49,6 +56,7 @@ public class PhotoController {
         }
         return new ResponseEntity<>("err", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
     @GetMapping("/uploadCredentials")
     public String getCredentialUpload(@RequestParam String keyName, @RequestParam String contentType) {
         S3Presigner presigner = S3Presigner.create();

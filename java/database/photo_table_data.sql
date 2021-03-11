@@ -1,3 +1,5 @@
+
+select * from photo;
 INSERT INTO photo (user_id, file_name, link, caption, likes_count, date_time)
 VALUES (42, 'photo 1 name', 'https://techelevatorgrambucket.s3.amazonaws.com/aphoward/united-states-best-places-to-visit-houston-skyline.jpg', 'this is the best picture', 25, '2017-01-13T17:09:42.411');
 INSERT INTO photo (user_id, file_name, link, caption, likes_count, date_time)

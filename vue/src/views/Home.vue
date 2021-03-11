@@ -1,3 +1,4 @@
+
 <template>
   <div class="Photo Page">
     <body>
@@ -6,23 +7,26 @@
         <input type="file" id="file" ref="file"
           v-on:change="handleFileUpload"/>
       </label>
-      <button v-on:click="submitFile">Submit</button>
+        <!-- <a id="show-submit-button"
+    href="#"
+    v-if="showButton === true"
+    v-on:click.prevent="showButton = true">     
+    </a> -->
+      <!-- <button v-on:click.prevent="submitFile"
+       v-on:event="submitFile" v-if="showButton === true">Submit</button>  -->
+       <button v-on:click.prevent="submitFile">Submit</button>
     </div>
+    
     <div id="file">
       <img id="imageView" />
-      <label>
-        caption
-        <textarea id=“caption” name=“caption” 
+        <label for="caption" v-show="files!=null">Add Photo Caption</label>
+        <textarea id="caption" name="caption"
           v-if="files!=null" v-on:change="handleCaptionChanged"
           v-model="caption"
         ></textarea>
-      </label>
     </div>
     </body>
-    
   </div>
-  
-  
 </template>
 <script>
 import PhotoService from '../services/PhotoService';
@@ -40,6 +44,9 @@ export default {
     methods: {
       /*
         Submits the file to the server
+        async chains promises - calls a chain
+        of then functions, returns promise in the callbacks
+        in the then function
       */
       async submitFile(){  
         try {
@@ -58,9 +65,11 @@ export default {
           // inspect: link shows url +? and then more binary. parse
           const link = s3Resp.config.baseURL.split('?')[0];
           const caption = this.caption;
+
           const photoMetadata = {
              userId, fileName, link, caption
           };
+
           // send the metadata to the backend to store in PosgresSQL DB
           console.log('sending photo metadata', photoMetadata);
           const metaResp = await PhotoService.create(photoMetadata);
@@ -74,8 +83,10 @@ export default {
       /*
         Handles a change on the file upload
       */
+     
+    
       handleFileUpload(event){
-        //console.log(‘event’, event)
+        //console.log('event', event)
         this.files = event.target.files;
         const imageView = document.getElementById('imageView');
         imageView.src = URL.createObjectURL(this.files[0]);
@@ -83,27 +94,53 @@ export default {
           URL.revokeObjectURL(output.src)
         }
       },
-      /*
-        Handles a change to the caption
-      */
+       
+      //  Handles a change to the caption
+  
       handleCaptionChanged(event) {
-        //console.log(event.target)
-       // this.caption = event.target.value;
+        console.log(event.target)
+       this.caption = event.target.value;
+       alert('Submitted');
       }
     }
-  }
+}
+  //   handleSubmitButton() {
+
+
+  //     button.style.visibility = "hidden";
+  //   }
+  // }
 </script>
 <style scoped>
-input {
+
+
+
+#caption {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 95%;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(400px, 1fr));
+  
+}
+
+body {
   background-color: #00ADEE;
+  padding: 0;
+  margin: 0;
+  width: 65%;
+  min-height:100vh;
   }
 div {
   margin: auto;
   color: white;
   background-color: #00ADEE;
-  display: flex;
+   display: grid;
+   display: flex;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
 }
 button {
   color: white;

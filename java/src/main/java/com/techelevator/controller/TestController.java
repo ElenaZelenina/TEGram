@@ -47,7 +47,7 @@ public class TestController {
 	public boolean addPhoto(@Valid @RequestBody PhotoRequest request, Principal principal) {
 		int userId = userDAO.findIdByUsername(principal.getName());
 		boolean photoAdded = false;
-		photoAdded = photoDAO.create(userId, request.getFileName(), request.getLink(), request.getCaption());		
+		photoAdded = (boolean) photoDAO.create(userId, request.getFileName(), request.getLink(), request.getCaption());
 		return photoAdded;
 	}
 	    

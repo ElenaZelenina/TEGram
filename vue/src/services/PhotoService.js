@@ -5,16 +5,17 @@ const http = axios.create({
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST'
-    /*
+    /* 
     good explanation of Cross Origin Request
     https://stackoverflow.com/questions/45975135/access-control-origin-header-error-using-axios-in-react-web-throwing-error-in-ch
-           headers: {
-      'x-apikey': ‘59a7ad19f5a9fa0808f11931’,
-      ‘Access-Control-Allow-Origin’ : ‘*’,
-      ‘Access-Control-Allow-Methods’ : ‘GET,PUT,POST,DELETE,PATCH,OPTIONS’,
+           headers: { 
+      'x-apikey': '59a7ad19f5a9fa0808f11931',
+      'Access-Control-Allow-Origin' : '*',
+      'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       */
             }
 });
+
 export default {
   list() {
     return http.get('/allphotos');
