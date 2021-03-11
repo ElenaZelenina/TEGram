@@ -1,41 +1,32 @@
+
 <template>
   <div class="Photo Page">
     <body>
     <div class="large-12 medium-12 small-12 cell">
-      
       <label>File:
         <input type="file" id="file" ref="file"
           v-on:change="handleFileUpload"/>
       </label>
-       
-       <a id="show-submit-button"
-     href="#"
-     v-if="showButton === true"
-     v-on:click.prevent="showButton = true">
-     </a>
-
-      <button 
-      
-      v-on:click.prevent="submitFile">Submit</button>
-
+        <!-- <a id="show-submit-button"
+    href="#"
+    v-if="showButton === true"
+    v-on:click.prevent="showButton = true">     
+    </a> -->
+      <!-- <button v-on:click.prevent="submitFile"
+       v-on:event="submitFile" v-if="showButton === true">Submit</button>  -->
+       <button v-on:click.prevent="submitFile">Submit</button>
     </div>
     
     <div id="file">
       <img id="imageView" />
         <label for="caption" v-show="files!=null">Add Photo Caption</label>
-
         <textarea id="caption" name="caption"
           v-if="files!=null" v-on:change="handleCaptionChanged"
           v-model="caption"
-        
         ></textarea>
-
     </div>
     </body>
-    
   </div>
-  
-  
 </template>
 <script>
 import PhotoService from '../services/PhotoService';
@@ -93,16 +84,7 @@ export default {
         Handles a change on the file upload
       */
      
-       handleFileUpload(){
-        //console.log('event', event)
-        this.files = event.target.files;
-        const imageView = document.getElementById('imageView');
-        imageView.src = URL.createObjectURL(this.files[0]);
-        imageView.onLoad = ()=>{
-          URL.revokeObjectURL()
-        }
-      },
-    /** 
+    
       handleFileUpload(event){
         //console.log('event', event)
         this.files = event.target.files;
@@ -113,11 +95,10 @@ export default {
         }
       },
        
-      
       //  Handles a change to the caption
-   */
+  
       handleCaptionChanged(event) {
-        
+        console.log(event.target)
        this.caption = event.target.value;
        alert('Submitted');
       }
@@ -132,27 +113,34 @@ export default {
 </script>
 <style scoped>
 
+
+
 #caption {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 95%;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(400px, 1fr));
   
 }
+
 body {
   background-color: #00ADEE;
   padding: 0;
   margin: 0;
-  width: 100%;
+  width: 65%;
   min-height:100vh;
   }
 div {
   margin: auto;
-  color: rgb(255, 255, 255);
+  color: white;
   background-color: #00ADEE;
-  display: flex;
+   display: grid;
+   display: flex;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
 }
 button {
   color: white;
