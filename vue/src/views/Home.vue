@@ -15,7 +15,8 @@
      </a>
 
       <button 
-      v-on:event.prevent="submitFile" v-if="showButton === true">Submit</button>
+      
+      v-on:click.prevent="submitFile">Submit</button>
 
     </div>
     
