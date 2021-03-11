@@ -1,32 +1,23 @@
 <template>
-<div>
-<h1>Photo Details</h1>
-
+<div class="comments">
+    <h2>Photo Details</h2>
+    <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
+      <h3>{{ comment.username }}</h3>
+      <p class="postedOn">{{ comment.postedOn }}</p>
+      <p>{{ comment.body }}</p>
+    </div>
+  </div>
 </template>
 
 <script>
-import photoFeed from "../views/PhotoFeed";
 
 export default {
-name: "photoDetails",
-  data() {
-    return {
-        photo: {
-            caption: "",
-            uploadDate: "",
-        }
-    };   
-},
-methods: {
-    photoDetail() {
-        let photo = {
-            "caption": "",
-            "uploadDate": new Date('yyyy-MM-dd'),
-        }
-        photos.unshift(photo);
-    }
-},
-}
+   name: 'comments-list',
+  props: ['comments'],
+
+    };
+
+
 </script>
 
 <style scoped>
