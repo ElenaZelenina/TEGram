@@ -2,22 +2,27 @@
   <div class="Photo Page">
     <body>
     <div class="large-12 medium-12 small-12 cell">
+      
       <label>File:
-        <input type="file" id="file" ref="file" 
+        <input type="file" id="file" ref="file"
           v-on:change="handleFileUpload"/>
       </label>
-      <button v-on:click="submitFile">Submit</button>
+      <button 
+      
+      v-on:click.prevent="submitFile" v-if="handleFileUpload === true">Submit</button>
+
     </div>
+    
     <div id="file">
       <img id="imageView" />
-      <label>
-        caption
-        <textarea id="caption" name="caption" 
+        <label for="caption" v-show="files!=null">Add Photo Caption</label>
+
+        <textarea id="caption" name="caption"
           v-if="files!=null" v-on:change="handleCaptionChanged"
           v-model="caption"
+        
         ></textarea>
 
-      </label>
     </div>
     </body>
     
@@ -25,11 +30,9 @@
   
   
 </template>
-
 <script>
 import PhotoService from '../services/PhotoService';
 import s3Service from "../services/S3Service"
-
 export default {
     /*
       Defines the data used by the component
@@ -111,13 +114,29 @@ export default {
        // this.caption = event.target.value;
       }
     }
-  }
-</script>
+}
+  //   handleSubmitButton() {
 
+
+  //     button.style.visibility = "hidden";
+  //   }
+  // }
+</script>
 <style scoped>
 
-input {
+#caption {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 95%;
+  
+}
+body {
   background-color: #00ADEE;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height:100vh;
   }
 div {
   margin: auto;
@@ -136,6 +155,5 @@ button {
   -webkit-border-radius: 10px;
   display: flex;
   justify-content: center;
-
 }
 </style>

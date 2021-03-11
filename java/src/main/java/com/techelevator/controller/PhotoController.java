@@ -16,7 +16,6 @@ import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignReques
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.Duration;
-
 @RestController
 @CrossOrigin(origins="*")
 @RequestMapping("/photos")
@@ -30,7 +29,6 @@ public class PhotoController {
         this.userDAO = userDAO;
     }
 
-
 //     this gets the correct data, but doesn't send to db
 //    @ResponseStatus(HttpStatus.CREATED)
 //    @RequestMapping(path = "", method = RequestMethod.POST)
@@ -41,7 +39,6 @@ public class PhotoController {
 //
 //    }
 
-
 //    @ResponseStatus(HttpStatus.CREATED)
 //    @RequestMapping(path = "", method = RequestMethod.POST)
 //    public boolean addPhoto(@Valid @RequestBody PhotoRequest request, Principal principal) {
@@ -51,12 +48,9 @@ public class PhotoController {
 //        return photoAdded;
 //    }
 
-
-
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     public ResponseEntity<String> createPhoto(@Valid @RequestBody PhotoRequest getPhotoData) {
-
         if(photoDAO.create(getPhotoData.getUserId(), getPhotoData.getFileName(), getPhotoData.getLink(), getPhotoData.getCaption())) {
             return new ResponseEntity<>("ok", HttpStatus.OK);
         }
@@ -73,23 +67,17 @@ public class PhotoController {
                             .key(keyName)
                             .contentType(contentType)
                             .build();
-
             PutObjectPresignRequest putObjectPresignRequest =
                     PutObjectPresignRequest.builder()
                             .signatureDuration(Duration.ofMinutes(15))
                             .putObjectRequest(putObjectRequest)
                             .build();
-
             // Generate the presigned request
             PresignedPutObjectRequest presignedPutObjectRequest =
                     presigner.presignPutObject(putObjectPresignRequest);
-
             // Log the presigned URL
             System.out.println("Presigned URL: " + presignedPutObjectRequest.url());
-
             return "" + presignedPutObjectRequest.url();
-
-
         } catch (S3Exception e) {
             e.getStackTrace();
         }

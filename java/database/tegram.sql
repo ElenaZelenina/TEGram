@@ -74,7 +74,7 @@ CREATE TABLE "like" (
 
 SELECT * FROM "like";
 
-ROLLBACK;
+COMMIT;
 
 SELECT * FROM "like";
 

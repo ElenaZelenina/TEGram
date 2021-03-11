@@ -17,11 +17,9 @@ const http = axios.create({
 });
 
 export default {
-
   list() {
     return http.get('/allphotos');
   },
-
   getPresignedUrl(fileName, fileType) {
     return http.get('/photos/uploadCredentials', {
       params:{
@@ -33,7 +31,6 @@ export default {
   get(id) {
     return http.get(`/docs/${id}`)
   },
-
   // post photo metadata
   create(photoMetadata) {
     console.log('photoMetadata', photoMetadata);
@@ -50,5 +47,4 @@ export default {
   delete(id) {
     return http.delete(`/docs/${id}`);
   }
-
 }

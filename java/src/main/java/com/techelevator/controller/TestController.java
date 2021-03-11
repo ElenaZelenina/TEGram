@@ -8,14 +8,18 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.PhotoDAO;
 import com.techelevator.dao.UserDAO;
+import com.techelevator.dao.CommentDAO;
+import com.techelevator.model.Comment;
 import com.techelevator.model.Photo;
 import com.techelevator.model.PhotoRequest;
 
@@ -25,10 +29,12 @@ public class TestController {
 
 	private PhotoDAO photoDAO;
 	private UserDAO userDAO;
+	private CommentDAO commentDAO;
 	
-	public TestController(PhotoDAO photoDAO, UserDAO userDAO) {
+	public TestController(PhotoDAO photoDAO, UserDAO userDAO, CommentDAO commentDAO) {
 		this.photoDAO = photoDAO;
 		this.userDAO = userDAO;
+		this.commentDAO = commentDAO;
 	}
 	
 	@ResponseStatus(HttpStatus.CREATED)
@@ -45,5 +51,12 @@ public class TestController {
     	List<Photo> photos = new ArrayList<>();
     	photos = photoDAO.findAll();
     	return photos;
+    }
+    
+    @RequestMapping(path = "/photo/{id}/comments", method = RequestMethod.GET)
+    public List<Comment> getCommentsForPhoto(@PathVariable int id) {
+    	List<Comment> comments = new ArrayList<>();
+    	comments = commentDAO.findCommentsForPhoto(id);
+    	return comments;
     }
 }
