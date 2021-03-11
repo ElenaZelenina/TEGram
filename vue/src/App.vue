@@ -37,7 +37,7 @@ img .navbar-brand {
   display: flex;
   }
   #app {
-    background-color: #999999;
+    background-color: rgb(255,255,255);
   }
   .navbar-stack {
     display: flex;

@@ -110,8 +110,9 @@ export default {
       //  Handles a change to the caption
    */
       handleCaptionChanged(event) {
-        //console.log(event.target)
-       // this.caption = event.target.value;
+        
+       this.caption = event.target.value;
+       alert('Submitted');
       }
     }
 }
@@ -140,7 +141,7 @@ body {
   }
 div {
   margin: auto;
-  color: white;
+  color: rgb(255, 255, 255);
   background-color: #00ADEE;
   display: flex;
   justify-content: center;
