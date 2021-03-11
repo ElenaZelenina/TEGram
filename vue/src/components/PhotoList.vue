@@ -1,6 +1,6 @@
 <template>
     <section class="photolist">
-        <router-link :to="{name: '', params: {}}" 
+        <router-link :to="{name: 'photoDetails', params: { id: $route.params.boardID }}" 
         v-for="photo in photos" v-bind:key="photo.id">
         <b-image
             class="photo"
