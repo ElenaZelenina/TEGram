@@ -14,12 +14,16 @@ public class CommentSqlDAO implements CommentDAO{
 
 	private JdbcTemplate jdbcTemplate;
 	
+	public CommentSqlDAO(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
 	@Override
 	public List<Comment> findCommentsForPhoto(int photoId) {
 		List<Comment> comments = new ArrayList<>();
 		String sql = "SELECT comment_id, photo_id, comment.user_id, message, "
 				+ "comment.date_time, username FROM comment JOIN users "
-				+ "ON comment.user_id = users.user_id WHERE photo_id = ;";
+				+ "ON comment.user_id = users.user_id WHERE photo_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, photoId);
 		while(results.next()) {
 			Comment comment = mapRowToComment(results);
