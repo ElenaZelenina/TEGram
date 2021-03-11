@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techelevator.dao.PhotoDAO;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.dao.CommentDAO;
+import com.techelevator.dao.PhotoCommentDAO;
 import com.techelevator.model.Comment;
 import com.techelevator.model.Photo;
+import com.techelevator.model.PhotoComment;
 import com.techelevator.model.PhotoRequest;
 
 @RestController
@@ -30,11 +32,14 @@ public class TestController {
 	private PhotoDAO photoDAO;
 	private UserDAO userDAO;
 	private CommentDAO commentDAO;
+	private PhotoCommentDAO photoCommentDAO;
 	
-	public TestController(PhotoDAO photoDAO, UserDAO userDAO, CommentDAO commentDAO) {
+	public TestController(PhotoDAO photoDAO, UserDAO userDAO, 
+			CommentDAO commentDAO, PhotoCommentDAO photoCommentDAO) {
 		this.photoDAO = photoDAO;
 		this.userDAO = userDAO;
 		this.commentDAO = commentDAO;
+		this.photoCommentDAO = photoCommentDAO;
 	}
 	
 	@ResponseStatus(HttpStatus.CREATED)
@@ -47,9 +52,16 @@ public class TestController {
 	}
 	    
     @RequestMapping(path = "/allphotos", method = RequestMethod.GET)
-    public List<Photo> getAll() {
+    public List<Photo> getTen() {
     	List<Photo> photos = new ArrayList<>();
-    	photos = photoDAO.findAll();
+    	photos = photoDAO.findTen();
+    	return photos;
+    }
+    
+    @RequestMapping(path = "/photofeed", method = RequestMethod.GET)
+    public List<PhotoComment> getAllPhotosOneComment() {
+    	List<PhotoComment> photos = new ArrayList<>();
+    	photos = photoCommentDAO.allPhotosOneComment();
     	return photos;
     }
     

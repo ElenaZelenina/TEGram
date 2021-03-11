@@ -6,7 +6,7 @@ import com.techelevator.model.Photo;
 
 public interface PhotoDAO {
 	
-	List<Photo> findAll();
+	List<Photo> findTen();
 	
 	Photo getPhotoById(int photoId);
 	
