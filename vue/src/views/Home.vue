@@ -14,7 +14,7 @@
       <div id="caption-box" v-show="files!=null">
         <label>Add Photo Caption
           <textarea id="caption" name="caption"
-            rows="4" cols="20" maxlength="156" wrap="hard"
+            rows="6" cols="20" maxlength="156" wrap="hard"
             v-if="files!=null" v-on:change="handleCaptionChanged"
             v-model="caption"
           ></textarea>
@@ -71,6 +71,7 @@ export default {
           const metaResp = await PhotoService.create(photoMetadata);
           this.$router.push("/Photos"); 
           console.log('SUCCESS!!', link);
+
         }
         catch(err){
           console.log('FAILURE!!', err);
@@ -129,13 +130,15 @@ export default {
   width: auto;
 }
 #caption-box {
+  
     max-width: 750px;
     width: auto;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 30px 0;
 }
 #caption-box textarea {
     background-color: white;
+    
 }
 #caption {
     -webkit-box-sizing: border-box;
@@ -144,7 +147,7 @@ export default {
     width: 100%;
     display: block;
     margin: auto;
-    padding: 30px 0;
+    padding: 10px 0;
 }
 #submit-btn {
   color: white;

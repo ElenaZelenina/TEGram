@@ -11,5 +11,6 @@ public interface PhotoDAO {
 	Photo getPhotoById(int photoId);
 	
 	boolean create(int user_id, String fileName, String link, String caption);
-	
+
+	List<Photo> getPhotoByUserId(int user_id);
 }
