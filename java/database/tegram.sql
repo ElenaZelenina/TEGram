@@ -74,9 +74,10 @@ CREATE TABLE "like" (
 
 SELECT * FROM "like";
 
-COMMIT;
+ROLLBACK;
 
 SELECT * FROM "like";
+select * from photo;
 
 
 

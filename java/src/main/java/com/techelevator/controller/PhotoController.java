@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.PhotoDAO;
 import com.techelevator.dao.UserDAO;
+import com.techelevator.model.Photo;
 import com.techelevator.model.PhotoRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,8 @@ import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignReques
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.Duration;
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins="*")
 @RequestMapping("/photos")
@@ -29,24 +32,12 @@ public class PhotoController {
         this.userDAO = userDAO;
     }
 
-//     this gets the correct data, but doesn't send to db
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @RequestMapping(path = "", method = RequestMethod.POST)
-//    public Object createPhoto(@Valid @RequestBody PhotoRequest request, Principal principal) {
-//        int userId = userDAO.findIdByUsername(principal.getName());
-//
-//        return photoDAO.create(userId, request.getFileName(), request.getLink(), request.getCaption());
-//
-//    }
+    @RequestMapping(path = "/users/{id}", method = RequestMethod.GET)
+    public List<Photo> returnPhotoByUserId(@PathVariable("id") int user_id ){
+        List<Photo> allUsersPhotos = photoDAO.getPhotoByUserId(user_id);
+        return allUsersPhotos;
 
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @RequestMapping(path = "", method = RequestMethod.POST)
-//    public boolean addPhoto(@Valid @RequestBody PhotoRequest request, Principal principal) {
-//        int userId = userDAO.findIdByUsername(principal.getName());
-//        boolean photoAdded = false;
-//        photoAdded = photoDAO.create(userId, request.getFileName(), request.getLink(), request.getCaption());
-//        return photoAdded;
-//    }
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
