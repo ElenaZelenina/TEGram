@@ -23,9 +23,9 @@ public class PhotoSqlDAO implements PhotoDAO {
 	}
 
 	@Override
-	public List<Photo> findAll() {
+	public List<Photo> findTen() {
 		List<Photo> photos = new ArrayList<>();
-		String sql = "SELECT * FROM photo";
+		String sql = "SELECT * FROM photo LIMIT 10";
 		
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 		while(results.next()) {

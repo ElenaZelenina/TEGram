@@ -18,7 +18,7 @@ const http = axios.create({
 
 export default {
   list() {
-    return http.get('/allphotos');
+    return http.get('/photofeed');
   },
   getPresignedUrl(fileName, fileType) {
     return http.get('/photos/uploadCredentials', {
@@ -28,8 +28,11 @@ export default {
       }
     });
   },
+  getComments(id){
+    return http.get(`/photo/${id}/comments`);
+  },
   get(id) {
-    return http.get(`/docs/${id}`)
+    return http.get(`/photo/${id}`)
   },
   // post photo metadata
   create(photoMetadata) {
