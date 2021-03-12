@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: "TegramPost",
+  name: "PhotoDetails",
   props: {
     post: Object
   }

@@ -44,7 +44,7 @@ public class PhotoCommentSqlDAO implements PhotoCommentDAO {
 		PhotoComment pc = new PhotoComment();
 		pc.setPhotoId(rs.getInt("photo_id"));
 		pc.setLink(rs.getString("link"));
-		pc.setLink(rs.getString("caption"));
+		pc.setCaption(rs.getString("caption"));
 		pc.setLikesCount(rs.getInt("likes_count"));
 		pc.setCommentDateTime(rs.getDate("comment_date_time"));
 		pc.setMessage(rs.getString("message"));

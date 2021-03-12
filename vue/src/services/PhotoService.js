@@ -18,7 +18,7 @@ const http = axios.create({
 
 export default {
   list() {
-    return http.get('/allphotos');
+    return http.get('/photofeed');
   },
   getPresignedUrl(fileName, fileType) {
     return http.get('/photos/uploadCredentials', {
