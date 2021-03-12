@@ -48,7 +48,7 @@ import photoService from "../services/PhotoService";
 export default {
   name: "login",
   components: {
-    Carousel
+    Carousel,
   },
   data() {
     return {
@@ -57,7 +57,7 @@ export default {
         password: "",
       },
       invalidCredentials: false,
-      photos: []
+      photos: [],
     };
   },
   created() {
@@ -92,24 +92,38 @@ export default {
 };
 </script>
 <style scoped>
-.form-signin .carousel {
+.form-signin {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
+  margin: 1rem;
+}
+
+.carousel {
+  width: 100%;
+  max-width: 700px;
 }
 
 #login {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 a {
   margin: auto 20px;
   color: white;
-  background-color: #00ADEE;
+  background-color: #00adee;
 }
 
 button {
   color: white;
-  background-color: #8CC63F;
+  background-color: #8cc63f;
+}
+
+@media only screen and (max-width: 600px) {
+  #login {
+    flex-direction: column;
+  }
 }
 </style>
