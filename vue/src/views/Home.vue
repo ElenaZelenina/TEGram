@@ -1,31 +1,27 @@
 
 <template>
-  <div class="Photo Page">
-    <body>
-    <div class="large-12 medium-12 small-12 cell">
-      <label>File:
+  <div id="photo-page">
+    <div id="photo-chooser" class="">
+      <label id="file-label">File:
         <input type="file" id="file" ref="file"
           v-on:change="handleFileUpload"/>
       </label>
-        <!-- <a id="show-submit-button"
-    href="#"
-    v-if="showButton === true"
-    v-on:click.prevent="showButton = true">     
-    </a> -->
-      <!-- <button v-on:click.prevent="submitFile"
-       v-on:event="submitFile" v-if="showButton === true">Submit</button>  -->
-       <button v-on:click.prevent="submitFile">Submit</button>
     </div>
-    
-    <div id="file">
-      <img id="imageView" />
-        <label for="caption" v-show="files!=null">Add Photo Caption</label>
-        <textarea id="caption" name="caption"
-          v-if="files!=null" v-on:change="handleCaptionChanged"
-          v-model="caption"
-        ></textarea>
+    <div id="photo-display">
+      <div>
+        <img id="imageView" />
+      </div>
+      <div id="caption-box" v-show="files!=null">
+        <label>Add Photo Caption
+          <textarea id="caption" name="caption"
+            rows="4" cols="20" maxlength="156" wrap="hard"
+            v-if="files!=null" v-on:change="handleCaptionChanged"
+            v-model="caption"
+          ></textarea>
+        </label>
+        <button id="submit-btn" v-on:click.prevent="submitFile">Submit</button>
+      </div>
     </div>
-    </body>
   </div>
 </template>
 <script>
@@ -98,9 +94,7 @@ export default {
       //  Handles a change to the caption
   
       handleCaptionChanged(event) {
-        console.log(event.target)
-       this.caption = event.target.value;
-       alert('Submitted');
+        this.caption = event.target.value;
       }
     }
 }
@@ -112,44 +106,51 @@ export default {
   // }
 </script>
 <style scoped>
-
-
-
+#photo-page {
+  color: white;
+  width: 100%;
+  height: 100%;
+  background-color: #00ADEE;
+}
+#photo-chooser {
+  text-align: center;
+  margin: 20px auto;
+}
+#file-label{
+  padding-left: 100px;
+}
+#photo-display {
+  text-align: center;
+}
+#imageView {
+  display:block;
+  margin: 0 auto;
+  height: 360px;
+  width: auto;
+}
+#caption-box {
+    max-width: 750px;
+    width: auto;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+#caption-box textarea {
+    background-color: white;
+}
 #caption {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width: 95%;
-    display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(400px, 1fr));
-  
+    width: 100%;
+    display: block;
+    margin: auto;
+    padding: 30px 0;
 }
-
-body {
-  background-color: #00ADEE;
-  padding: 0;
-  margin: 0;
-  width: 65%;
-  min-height:100vh;
-  }
-div {
-  margin: auto;
-  color: white;
-  background-color: #00ADEE;
-   display: grid;
-   display: flex;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  justify-content: center;
-  align-items: center;
-}
-button {
+#submit-btn {
   color: white;
   background-color: #8CC63F;
   padding: 10px;
+  margin: 10px;
   border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  display: flex;
-  justify-content: center;
 }
 </style>

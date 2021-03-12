@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
-      <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo">
-      <router-link v-bind:to="{ name: 'home' }" class="navbar-item">Home</router-link>
-      <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item">Photos</router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="navbar-item">Logout</router-link>
-      <img class="navbar-stack" src="../public/Copy of Stacked logo.png" alt="stacked logo">
+      <div class="nav-grp">
+        <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo">
+        <router-link v-bind:to="{ name: 'home' }" class="navbar-item">Home</router-link>
+        <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item">Photos</router-link>
+        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="navbar-item">Logout</router-link>
+      </div>
+      <img class="navbar-icon" src="../public/Copy of Stacked logo.png" alt="stacked logo">
     </div>
     <router-view />
   </div>
@@ -24,25 +26,43 @@
 // environment variables for aws
 
 <style scoped>
-
+#app{
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.nav-grp {
+  display: flex;
+  align-items: flex-end;
+  min-width: 300px;
+  width: 200px;
+}
 #nav {
   display: flex;
-  height: auto;
   align-items: flex-end;
-  }
+  justify-content: space-between;
+}
 img .navbar-brand {
   display: flex;
-  }
+}
 .navbar-item{
   display: flex;
-  }
-  #app {
-    background-color: rgb(255,255,255);
-  }
-  .navbar-stack {
-    display: flex;
-    justify-content: center;
-    margin-left: 20%;
-    padding: auto;
-  }
+  padding: 0.25rem;
+}
+#app {
+  background-color: rgb(255,255,255);
+  position: relative;
+}
+.navbar-icon {
+  height:auto;
+  max-width: 300px;
+  width: 38%;
+}
+.navbar-stackx {
+  display: flex;
+  justify-content: center;
+  margin-left: 20%;
+  padding: auto;
+}
 </style>
