@@ -1,8 +1,8 @@
 <template>
-  <div class="comments">
+  <div class="details">
     <h2>{{ caption }}</h2>
 
-    <img v-bind:src="link" />
+    <b-image v-bind:src="link"></b-image>
 
     <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
       <div class="author">
@@ -49,5 +49,18 @@ export default {
 </script>
 
 <style scoped>
+  .details {
+    max-width: 80%;
+    align-self: center;
+  }
+  h2 {
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+  }
+  .author {
+    font-weight: bold;
+  }
+
 
 </style>

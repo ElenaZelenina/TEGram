@@ -39,17 +39,20 @@ export default {
 <style scoped>
 .photolist {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-gap: 2rem;
+  margin: 0 2rem 2rem 2rem;
 }
 .comment {
   padding: 8px;
-  border: 1px solid #aaa;
 }
 .comment .author {
-  text-align: right;
   font-style: italic;
   border-bottom: 1px solid #999;
   margin-bottom: 8px;
+}
+.caption {
+  font-weight: bold;
+  text-align: center;
 }
 </style>

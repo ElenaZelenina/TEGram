@@ -69,7 +69,7 @@ export default {
           // send the metadata to the backend to store in PosgresSQL DB
           console.log('sending photo metadata', photoMetadata);
           const metaResp = await PhotoService.create(photoMetadata);
-           this.$router.push("/Photos");
+          this.$router.push("/Photos"); 
           console.log('SUCCESS!!', link);
 
         }

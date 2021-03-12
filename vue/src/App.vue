@@ -3,11 +3,11 @@
     <div id="nav">
       <div class="nav-grp">
         <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo">
-        <router-link v-bind:to="{ name: 'home' }" class="navbar-item">Home</router-link>
+        <router-link v-bind:to="{ name: 'home' }" class="navbar-item" spaced shadow>Home</router-link>
         <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item">Photos</router-link>
         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="navbar-item">Logout</router-link>
       </div>
-      <img class="navbar-icon" src="../public/Copy of Stacked logo.png" alt="stacked logo">
+      <img class="navbar-icon" src="../public/TEGram.png" alt="logo">
     </div>
     <router-view />
   </div>
@@ -40,15 +40,18 @@
 }
 #nav {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+flex-wrap: wrap;
+justify-content: space-around;
+align-items: center;
 }
-img .navbar-brand {
-  display: flex;
+.navbar-brand {
+  width: 50px;
+
 }
 .navbar-item{
   display: flex;
   padding: 0.25rem;
+  
 }
 #app {
   background-color: rgb(255,255,255);
@@ -57,7 +60,7 @@ img .navbar-brand {
 .navbar-icon {
   height:auto;
   max-width: 300px;
-  width: 38%;
+
 }
 .navbar-stackx {
   display: flex;
