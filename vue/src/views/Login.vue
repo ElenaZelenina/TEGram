@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     getPhotos() {
-      photoService.list().then((response) => {
+      photoService.getTen().then((response) => {
         this.$store.commit("SET_PHOTOS", response.data);
         this.photos = response.data;
       });

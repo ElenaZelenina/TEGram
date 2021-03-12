@@ -51,7 +51,7 @@ public class TestController {
 		return photoAdded;
 	}
 	    
-    @RequestMapping(path = "/allphotos", method = RequestMethod.GET)
+    @RequestMapping(path = "/tenphotos", method = RequestMethod.GET)
     public List<Photo> getTen() {
     	List<Photo> photos = new ArrayList<>();
     	photos = photoDAO.findTen();
@@ -77,4 +77,11 @@ public class TestController {
     	Photo photo = photoDAO.getPhotoById(id);
     	return photo;
     }
+    
+    @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
+    public String getUserNameByUserId(@PathVariable int id) {
+    	String userName = userDAO.getUserById(id).getUsername();
+		return userName;
+    }
+    
 }

@@ -20,6 +20,9 @@ export default {
   list() {
     return http.get('/photofeed');
   },
+  getTen() {
+    return http.get('/tenphotos');
+  },
   getPresignedUrl(fileName, fileType) {
     return http.get('/photos/uploadCredentials', {
       params:{
@@ -32,8 +35,12 @@ export default {
     return http.get(`/photo/${id}/comments`);
   },
   get(id) {
-    return http.get(`/photo/${id}`)
+    return http.get(`/photo/${id}`);
   },
+  getUsername(id){
+    return http.get(`/user/${id}`);
+  },
+
   // post photo metadata
   create(photoMetadata) {
     console.log('photoMetadata', photoMetadata);

@@ -1,9 +1,12 @@
 <template>
   <div class="details">
-    <h2>{{ caption }}</h2>
-
+    <div class="tags">
+      <b-button type="is-success" v-show="likesCount > 0">&#10084; {{ likesCount }}</b-button>
+      <b-button type="is-info is-light">Add to Favorites</b-button>
+      <b-button type="is-success">{{ username }}</b-button>  
+    </div>
     <b-image v-bind:src="link"></b-image>
-
+    <h2>{{ caption }}</h2>
     <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
       <div class="author">
         Comment by {{ comment.username }} on {{ comment.dateTime }}
@@ -26,6 +29,7 @@ export default {
       likesCount: 0,
       link: "",
       comments: [],
+      username: ""
     };
   },
   methods: {
@@ -34,7 +38,12 @@ export default {
         this.caption = response.data.caption;
         this.dateTime = response.data.dateTime;
         this.link = response.data.link;
+        this.likesCount = response.data.likesCount;
+        this.userId = response.data.userId;
         this.comments = [];
+        photoService.getUsername(this.userId).then((response) => {
+          this.username = response.data;
+        });
         photoService.getComments(this.photoId).then((response) => {
           this.comments = response.data;
         });
@@ -61,6 +70,9 @@ export default {
   .author {
     font-weight: bold;
   }
-
+  .tags {
+    display: flex;
+    justify-content: space-between;
+  }
 
 </style>

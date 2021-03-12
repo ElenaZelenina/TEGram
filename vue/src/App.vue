@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <div class="nav-grp">
+      <div class="navbar">
         <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo">
         <router-link v-bind:to="{ name: 'home' }" class="navbar-item" spaced shadow>Home</router-link>
         <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item">Photos</router-link>
@@ -32,17 +32,17 @@
   display: flex;
   flex-direction: column;
 }
-.nav-grp {
+.navbar {
   display: flex;
-  align-items: flex-end;
+  align-items: baseline-position;
   min-width: 300px;
   width: 200px;
 }
 #nav {
   display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-align-items: center;
+  
+  justify-content: space-around;
+  align-items: center;
 }
 .navbar-brand {
   width: 50px;
@@ -50,8 +50,16 @@ align-items: center;
 }
 .navbar-item{
   display: flex;
-  padding: 0.25rem;
-  
+  padding: 0 33px;
+  border-radius: 9px;
+  background-color: #00adee;
+  margin-left: 10px;
+  color: white;
+  text-transform: uppercase;
+}
+.navbar-item:hover {
+  background-color: #8cc63f;
+  color: white;
 }
 #app {
   background-color: rgb(255,255,255);
