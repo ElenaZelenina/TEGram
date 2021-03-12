@@ -71,4 +71,10 @@ public class TestController {
     	comments = commentDAO.findCommentsForPhoto(id);
     	return comments;
     }
+    
+    @RequestMapping(path = "/photo/{id}", method = RequestMethod.GET)
+    public Photo getPhotoById(@PathVariable int id) {
+    	Photo photo = photoDAO.getPhotoById(id);
+    	return photo;
+    }
 }

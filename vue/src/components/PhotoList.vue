@@ -1,7 +1,7 @@
 <template>
   <section class="photolist">
     <div v-for="photo in photos" v-bind:key="photo.id">
-      <router-link v-bind:to="{ name: 'Photo', params: { id: photo.id } }">
+      <router-link v-bind:to="'/photo/' + photo.photoId">
         <b-image
           class="photo"
           v-bind:src="photo.link"
@@ -10,7 +10,13 @@
         ></b-image>
         <p class="caption">{{ photo.caption }}</p>
       </router-link>
-      <div class="comment">{{ photo.message }}</div>
+      <div class="comment">
+        <div class="author">
+          Most recent comment by {{ photo.commentUsername }} on
+          {{ photo.commentDateTime }}
+        </div>
+        {{ photo.message }}
+      </div>
     </div>
   </section>
 </template>
@@ -22,7 +28,7 @@ export default {
   data() {
     return {
       photo: {
-          id: 0,
+        id: 0,
         link: "",
         caption: "",
       },
@@ -35,5 +41,15 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: 1rem;
+}
+.comment {
+  padding: 8px;
+  border: 1px solid #aaa;
+}
+.comment .author {
+  text-align: right;
+  font-style: italic;
+  border-bottom: 1px solid #999;
+  margin-bottom: 8px;
 }
 </style>

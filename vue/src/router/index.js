@@ -8,7 +8,7 @@ import store from '../store/index'
 import Upload from '../views/Upload.vue'
 import Carousel from '../components/Carousel'
 import PhotoFeed from '../views/PhotoFeed'
-import PhotoDetails from '../views/PhotoDetails'
+import PhotoDetail from '../views/PhotoDetail'
 
 Vue.use(Router)
 
@@ -78,8 +78,8 @@ const router = new Router({
     },
     {
       path: '/photo/:id',
-      name: 'Photo',
-      component: PhotoDetails,
+      name: 'photo-details',
+      component: PhotoDetail,
       meta: {
         requiresAuth: true
       }
