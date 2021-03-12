@@ -51,7 +51,6 @@ align-items: center;
 .navbar-item{
   display: flex;
   padding: 0.25rem;
-
   
 }
 #app {
