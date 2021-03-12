@@ -10,7 +10,7 @@
         ></b-image>
         <p class="caption">{{ photo.caption }}</p>
       </router-link>
-      <div class="comment">
+      <div v-show="photo.commentUsername" class="comment">
         <div class="author">
           Most recent comment by {{ photo.commentUsername }} on
           {{ photo.commentDateTime }}
