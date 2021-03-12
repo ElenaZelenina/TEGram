@@ -35,7 +35,7 @@ public class CommentSqlDAO implements CommentDAO{
 	private Comment mapRowToComment(SqlRowSet rs) {
 		Comment comment = new Comment();
 		comment.setId(rs.getInt("comment_id"));
-		comment.setId(rs.getInt("photo_id"));
+		comment.setPhotoId(rs.getInt("photo_id"));
 		comment.setUserId(rs.getInt("user_id"));
 		comment.setMessage(rs.getString("message"));
 		comment.setDateTime(rs.getDate("date_time"));
