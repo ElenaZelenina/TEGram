@@ -2,25 +2,28 @@
   <div class="tegram-post">
     <!--User image and username in header-->
     <div class="header level">
-        <div class="level-left">
-          <figure class="image is-32x32">
-            <img :src="post.userImage" />
-          </figure>
-          <span class="username">{{post.username}}</span>
-        </div>
+      <div class="level-left">
+        <figure class="image is-32x32">
+          <img :src="post.userImage" />
+        </figure>
+        <span class="username">{{ post.username }}</span>
+      </div>
     </div>
     <!--Main image upload-->
-    <div class="image-container"
+    <div
+      class="image-container"
       :class="post.filter"
-      :style="{ backgroundImage: 'url(' + post.postImage + ')' }">
-    </div>
+      :style="{ backgroundImage: 'url(' + post.postImage + ')' }"
+    ></div>
     <!--Caption, Likes, username-->
     <div class="content">
       <div class="heart">
         <i class="far fa-heart fa-lg"></i>
       </div>
-      <p class="likes">{{post.likes}} likes</p>
-      <p class="caption"><span>{{post.username}}</span> {{post.caption}}</p>
+      <p class="likes">{{ post.likes }} likes</p>
+      <p class="caption">
+        <span>{{ post.username }}</span> {{ post.caption }}
+      </p>
     </div>
   </div>
 </template>
@@ -29,11 +32,10 @@
 export default {
   name: "PhotoDetails",
   props: {
-    post: Object
-  }
+    post: Object,
+  },
 };
 </script>
 
 <style scoped>
-
 </style>

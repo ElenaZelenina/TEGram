@@ -12,9 +12,9 @@ export default {
     photoList,
   },
   data() {
-      return {
-          photos: []
-      }
+    return {
+      photos: [],
+    };
   },
   created() {
     this.getPhotos();
@@ -31,5 +31,4 @@ export default {
 </script>
 
 <style>
-
 </style>
