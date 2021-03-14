@@ -143,8 +143,7 @@ export default {
   height: 475px;
   width: auto;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  grid-gap: 2rem;
-  margin: 0 1rem 1rem 0;
+  margin: 0 2rem 2rem 2rem;
 }
 #caption-box {
   max-width: 550px;
