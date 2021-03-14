@@ -26,29 +26,28 @@
 // environment variables for aws
 
 <style scoped>
-#app{
+#app {
   height: 100vh;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-.navbar {
+/* .navbar {
   display: flex;
   align-items: baseline-position;
   min-width: 300px;
   width: 200px;
-}
+} */
 #nav {
   display: flex;
-  
+
   justify-content: space-around;
   align-items: center;
 }
 .navbar-brand {
   width: 50px;
-
 }
-.navbar-item{
+.navbar-item {
   display: flex;
   padding: 0 33px;
   border-radius: 9px;
@@ -62,13 +61,12 @@
   color: white;
 }
 #app {
-  background-color: rgb(255,255,255);
+  background-color: rgb(255, 255, 255);
   position: relative;
 }
 .navbar-icon {
-  height:auto;
+  height: auto;
   max-width: 300px;
-
 }
 .navbar-stackx {
   display: flex;
