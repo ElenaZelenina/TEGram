@@ -2,12 +2,25 @@
   <div id="app">
     <div id="nav">
       <div class="navbar">
-        <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo">
-        <router-link v-bind:to="{ name: 'home' }" class="navbar-item" spaced shadow>Home</router-link>
-        <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item">Photos</router-link>
-        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="navbar-item">Logout</router-link>
+        <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo" />
+        <router-link
+          v-bind:to="{ name: 'home' }"
+          class="navbar-item"
+          spaced
+          shadow
+          >Home</router-link
+        >
+        <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item"
+          >Photos</router-link
+        >
+        <router-link
+          v-bind:to="{ name: 'logout' }"
+          v-if="$store.state.token != ''"
+          class="navbar-item"
+          >Logout</router-link
+        >
       </div>
-      <img class="navbar-icon" src="../public/TEGram.png" alt="logo">
+      <img class="navbar-icon" src="../public/TEGram.png" alt="logo" />
     </div>
     <router-view />
   </div>

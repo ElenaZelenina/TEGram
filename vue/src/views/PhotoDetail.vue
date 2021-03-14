@@ -1,9 +1,11 @@
 <template>
   <div class="details">
     <div class="tags">
-      <b-button type="is-success" v-show="likesCount > 0">&#10084; {{ likesCount }}</b-button>
+      <b-button type="is-success" v-show="likesCount > 0"
+        >&#10084; {{ likesCount }}</b-button
+      >
       <b-button type="is-info is-light">Add to Favorites</b-button>
-      <b-button type="is-success">{{ username }}</b-button>  
+      <b-button type="is-success">{{ username }}</b-button>
     </div>
     <b-image v-bind:src="link"></b-image>
     <h2>{{ caption }}</h2>
@@ -29,7 +31,7 @@ export default {
       likesCount: 0,
       link: "",
       comments: [],
-      username: ""
+      username: "",
     };
   },
   methods: {
@@ -58,21 +60,20 @@ export default {
 </script>
 
 <style scoped>
-  .details {
-    max-width: 80%;
-    align-self: center;
-  }
-  h2 {
-    font-size: large;
-    font-weight: bold;
-    text-align: center;
-  }
-  .author {
-    font-weight: bold;
-  }
-  .tags {
-    display: flex;
-    justify-content: space-between;
-  }
-
+.details {
+  max-width: 80%;
+  align-self: center;
+}
+h2 {
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+}
+.author {
+  font-weight: bold;
+}
+.tags {
+  display: flex;
+  justify-content: space-between;
+}
 </style>

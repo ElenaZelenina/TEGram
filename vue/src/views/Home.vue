@@ -58,10 +58,12 @@ export default {
         of then functions, returns promise in the callbacks
         in the then function
       */
+
     // calls the file click above
     picFile() {
       this.$refs.file.click();
     },
+
     async submitFile() {
       try {
         // upload this photo to S3
