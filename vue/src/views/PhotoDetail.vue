@@ -1,12 +1,17 @@
 <template>
   <div class="details">
     <div class="tags">
-      <b-button type="is-success" v-show="likesCount > 0"
-        >&#10084; {{ likesCount }}</b-button
-      >
+      <b-button type="is-success" v-show="likesCount > 0" @dblclick="like"
+        >&#10084; {{ likesCount }}</b-button>
       <b-button type="is-info is-light">Add to Favorites</b-button>
       <b-button type="is-success">{{ username }}</b-button>
     </div>
+    <div class="heart">
+        <a class="far fa-heart fa-lg"
+          v-on="{'fas': this.post.hasBeenLiked}"
+          @click="like">
+        </a>
+      </div>
     <b-image v-bind:src="link"></b-image>
     <h2>{{ caption }}</h2>
     <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
@@ -56,6 +61,12 @@ export default {
     this.photoId = this.$route.params.id;
     this.retrievePhoto();
   },
+  like() {
+    this.post.hasBeenLiked
+    ? this.post.likes--
+    : this.post.likes++;
+    this.post.hasBeenLiked = !this.post.hasBeenLiked;
+  }
 };
 </script>
 
