@@ -6,7 +6,7 @@
         <router-link
           v-bind:to="{ name: 'home' }"
           class="navbar-item"
-          >Home</router-link
+          >Upload Photo</router-link
         >
         <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item"
           >Photos</router-link
