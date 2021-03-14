@@ -2,7 +2,9 @@
   <div class="details">
     <div class="tags">
       <b-button type="is-success">&#10084; {{ likesCount }}</b-button>
-      <b-button type="is-info is-light">Add to Favorites</b-button>
+      <b-button type="is-info is-light"
+                v-on:click="onFavoritedChange"
+                v-bind:class="{ active: favorite }">{{ favoriteButtonName }}</b-button>
       <b-button type="is-success">{{ username }}</b-button>
     </div>
     <b-image v-bind:src="link"></b-image>
@@ -30,9 +32,18 @@ export default {
       link: "",
       comments: [],
       username: "",
+      favorite: false,
+      isActive: false
     };
   },
   methods: {
+    onFavoritedChange() {
+      if(!this.favorite) {
+        photoService.addFavorite(this.photoId).then(() => {this.favorite = true;});
+      } else {
+        photoService.removeFavorite(this.photoId).then(() => {this.favorite = false;});
+      }
+    },    
     retrievePhoto() {
       photoService.get(this.photoId).then((response) => {
         this.caption = response.data.caption;
@@ -47,8 +58,19 @@ export default {
         photoService.getComments(this.photoId).then((response) => {
           this.comments = response.data;
         });
+        photoService.getFavorites().then((response) => {
+          const foundInResponse = response.data.find(photo => {
+            return photo.id == this.photoId;
+          });
+          this.favorite = !!foundInResponse;
+        });
       });
     },
+  },
+  computed: {
+    favoriteButtonName() {
+      return this.favorite ? "Favorite" : "Add to Favorites"
+    }
   },
   created() {
     this.photoId = this.$route.params.id;
@@ -79,6 +101,10 @@ export default {
   }
   .button.is-info.is-light {
     color: #00ADEE;
+  }
+  .button.is-info.is-light.active {
+    background-color: #00adee;
+    color: white;
   }
 
 </style>

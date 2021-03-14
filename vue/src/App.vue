@@ -6,8 +6,6 @@
         <router-link
           v-bind:to="{ name: 'home' }"
           class="navbar-item"
-          spaced
-          shadow
           >Home</router-link
         >
         <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item"
@@ -45,12 +43,6 @@
   display: flex;
   flex-direction: column;
 }
-/* .navbar {
-  display: flex;
-  align-items: baseline-position;
-  min-width: 300px;
-  width: 200px;
-} */
 #nav {
   display: flex;
 
