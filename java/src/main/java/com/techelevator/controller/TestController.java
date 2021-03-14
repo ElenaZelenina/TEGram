@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techelevator.dao.PhotoDAO;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.dao.CommentDAO;
+import com.techelevator.dao.FavoriteDAO;
 import com.techelevator.dao.PhotoCommentDAO;
 import com.techelevator.model.Comment;
 import com.techelevator.model.Photo;
@@ -33,13 +34,15 @@ public class TestController {
 	private UserDAO userDAO;
 	private CommentDAO commentDAO;
 	private PhotoCommentDAO photoCommentDAO;
+	private FavoriteDAO favoriteDAO;
 	
 	public TestController(PhotoDAO photoDAO, UserDAO userDAO, 
-			CommentDAO commentDAO, PhotoCommentDAO photoCommentDAO) {
+			CommentDAO commentDAO, PhotoCommentDAO photoCommentDAO, FavoriteDAO favoriteDAO) {
 		this.photoDAO = photoDAO;
 		this.userDAO = userDAO;
 		this.commentDAO = commentDAO;
 		this.photoCommentDAO = photoCommentDAO;
+		this.favoriteDAO = favoriteDAO;
 	}
 	
 	@ResponseStatus(HttpStatus.CREATED)
@@ -83,5 +86,29 @@ public class TestController {
     	String userName = userDAO.getUserById(id).getUsername();
 		return userName;
     }
+    
+    @RequestMapping(path = "/user/{id}/favorites", method = RequestMethod.GET)
+    public List<Photo> getFavorites(@PathVariable int id) {
+    	List<Photo> photos = new ArrayList<>();
+    	photos = photoDAO.getFavoritePhotos(id);
+    	return photos;
+    }
+    
+	@ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(path = "/addfavorite/{id}", method = RequestMethod.POST)
+	public boolean addFavorite(@Valid @PathVariable int id, Principal principal) {
+		int userId = userDAO.findIdByUsername(principal.getName());
+		boolean favoriteAdded = false;
+		favoriteAdded = favoriteDAO.create(userId, id);
+		return favoriteAdded;
+	}
+	
+	@RequestMapping(path = "/removefavorite/{id}", method = RequestMethod.DELETE)
+	public boolean removeFavorite(@Valid @PathVariable int id, Principal principal) {
+		int userId = userDAO.findIdByUsername(principal.getName());
+		boolean favoriteRemoved = false;
+		favoriteRemoved = favoriteDAO.delete(userId, id);
+		return favoriteRemoved;
+	}
     
 }

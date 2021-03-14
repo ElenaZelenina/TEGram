@@ -1,7 +1,7 @@
 <template>
   <div class="details">
     <div class="tags">
-      <b-button type="is-success" v-show="likesCount > 0">&#10084; {{ likesCount }}</b-button>
+      <b-button type="is-success">&#10084; {{ likesCount }}</b-button>
       <b-button type="is-info is-light">Add to Favorites</b-button>
       <b-button type="is-success">{{ username }}</b-button>  
     </div>
@@ -73,6 +73,12 @@ export default {
   .tags {
     display: flex;
     justify-content: space-between;
+  }
+  .button.is-success {
+    background-color: #8CC63F;
+  }
+  .button.is-info.is-light {
+    color: #00ADEE;
   }
 
 </style>

@@ -13,7 +13,7 @@
       </div>
       <div id="caption-box" v-show="files!=null">
         <label>Add Photo Caption
-          <textarea id="caption" name="caption"
+          <textarea id="caption" name="caption" 
             rows="6" cols="20" maxlength="156" wrap="hard"
             v-if="files!=null" v-on:change="handleCaptionChanged"
             v-model="caption"
