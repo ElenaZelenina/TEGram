@@ -3,7 +3,7 @@
     <div class="tags">
       <b-button type="is-success">&#10084; {{ likesCount }}</b-button>
       <b-button type="is-info is-light">Add to Favorites</b-button>
-      <b-button type="is-success">{{ username }}</b-button>  
+      <b-button type="is-success">{{ username }}</b-button>
     </div>
     <b-image v-bind:src="link"></b-image>
     <h2>{{ caption }}</h2>
@@ -29,7 +29,7 @@ export default {
       likesCount: 0,
       link: "",
       comments: [],
-      username: ""
+      username: "",
     };
   },
   methods: {

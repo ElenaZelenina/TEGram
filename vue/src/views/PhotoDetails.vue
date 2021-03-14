@@ -1,5 +1,5 @@
 <template>
-<div class="comments">
+  <div class="comments">
     <h2>Photo Details</h2>
     <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
       <h3>{{ comment.username }}</h3>
@@ -10,16 +10,11 @@
 </template>
 
 <script>
-
 export default {
-   name: 'comments-list',
-  props: ['comments'],
-
-    };
-
-
+  name: "comments-list",
+  props: ["comments"],
+};
 </script>
 
 <style scoped>
-
 </style>

@@ -8,7 +8,6 @@ import store from '../store/index'
 import Carousel from '../components/Carousel'
 import PhotoFeed from '../views/PhotoFeed'
 import PhotoDetail from '../views/PhotoDetail'
-
 import Upload from '../views/Upload.vue'
 
 Vue.use(Router)
@@ -84,8 +83,7 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    },
-    
+    }
   ]
 })
 

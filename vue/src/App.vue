@@ -2,12 +2,25 @@
   <div id="app">
     <div id="nav">
       <div class="navbar">
-        <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo">
-        <router-link v-bind:to="{ name: 'home' }" class="navbar-item" spaced shadow>Home</router-link>
-        <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item">Photos</router-link>
-        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="navbar-item">Logout</router-link>
+        <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo" />
+        <router-link
+          v-bind:to="{ name: 'home' }"
+          class="navbar-item"
+          spaced
+          shadow
+          >Home</router-link
+        >
+        <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item"
+          >Photos</router-link
+        >
+        <router-link
+          v-bind:to="{ name: 'logout' }"
+          v-if="$store.state.token != ''"
+          class="navbar-item"
+          >Logout</router-link
+        >
       </div>
-      <img class="navbar-icon" src="../public/TEGram.png" alt="logo">
+      <img class="navbar-icon" src="../public/TEGram.png" alt="logo" />
     </div>
     <router-view />
   </div>
@@ -26,29 +39,28 @@
 // environment variables for aws
 
 <style scoped>
-#app{
+#app {
   height: 100vh;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-.navbar {
+/* .navbar {
   display: flex;
   align-items: baseline-position;
   min-width: 300px;
   width: 200px;
-}
+} */
 #nav {
   display: flex;
-  
+
   justify-content: space-around;
   align-items: center;
 }
 .navbar-brand {
   width: 50px;
-
 }
-.navbar-item{
+.navbar-item {
   display: flex;
   padding: 0 33px;
   border-radius: 9px;
@@ -62,13 +74,12 @@
   color: white;
 }
 #app {
-  background-color: rgb(255,255,255);
+  background-color: rgb(255, 255, 255);
   position: relative;
 }
 .navbar-icon {
-  height:auto;
+  height: auto;
   max-width: 300px;
-
 }
 .navbar-stackx {
   display: flex;
