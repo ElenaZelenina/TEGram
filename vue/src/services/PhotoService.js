@@ -57,6 +57,15 @@ export default {
       }
     });
   },
+  getFavorites() {
+    return axios.get('/favorites');
+  },
+  addFavorite(photoId) {
+    return axios.post(`/addfavorite/${photoId}`);
+  },
+  removeFavorite(photoId) {
+    return axios.delete(`/removefavorite/${photoId}`);
+  },
   update(id, doc) {
     return http.put(`/docs/${id}`, doc);
   },

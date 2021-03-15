@@ -87,10 +87,11 @@ public class TestController {
 		return userName;
     }
     
-    @RequestMapping(path = "/user/{id}/favorites", method = RequestMethod.GET)
-    public List<Photo> getFavorites(@PathVariable int id) {
+    @RequestMapping(path = "/favorites", method = RequestMethod.GET)
+    public List<Photo> getFavorites (Principal principal) {
     	List<Photo> photos = new ArrayList<>();
-    	photos = photoDAO.getFavoritePhotos(id);
+    	int userId = userDAO.findIdByUsername(principal.getName());
+    	photos = photoDAO.getFavoritePhotos(userId);
     	return photos;
     }
     

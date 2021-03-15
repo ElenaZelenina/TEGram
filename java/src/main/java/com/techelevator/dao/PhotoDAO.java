@@ -9,7 +9,6 @@ public interface PhotoDAO {
 	List<Photo> findTen();
 
 	List<Photo> getAllPhotos();
-//	List<Photo> getPhotoByUserIdAndFavorites(int user_id);
 	
 	Photo getPhotoById(int photoId);
 	
