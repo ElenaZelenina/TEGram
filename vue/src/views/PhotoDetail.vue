@@ -83,7 +83,9 @@ export default {
     this.photoId = this.$route.params.id;
     this.retrievePhoto();
   },
+   
 };
+
 </script>
 
 <style scoped>
