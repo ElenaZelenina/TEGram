@@ -1,7 +1,7 @@
 <template>
   <section class="photolist">
     <div v-for="photo in photos" v-bind:key="photo.id">
-      <router-link v-bind:to="'/photo/' + photo.photoId">
+      <router-link v-bind:to="'/photo/' + photo.id">
         <b-image
           class="photo"
           v-bind:src="photo.link"
@@ -27,11 +27,6 @@ export default {
   props: ["photos"],
   data() {
     return {
-      photo: {
-        id: 0,
-        link: "",
-        caption: "",
-      },
     };
   },
 };

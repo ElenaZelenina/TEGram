@@ -5,8 +5,11 @@ import java.util.List;
 import com.techelevator.model.Photo;
 
 public interface PhotoDAO {
-	
+
 	List<Photo> findTen();
+
+	List<Photo> getAllPhotos();
+//	List<Photo> getPhotoByUserIdAndFavorites(int user_id);
 	
 	Photo getPhotoById(int photoId);
 	

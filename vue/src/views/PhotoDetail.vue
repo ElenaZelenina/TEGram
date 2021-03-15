@@ -2,8 +2,9 @@
   <div class="details">
     <div class="tags">
       <b-button type="is-success">&#10084; {{ likesCount }}</b-button>
-      <b-button type="is-info is-light">Add to Favorites</b-button>
-      <b-button type="is-success">{{ username }}</b-button>
+      <router-link v-bind:to="'/photos?userId=' + userId">
+        <b-button type="is-success">{{ username }}</b-button>
+      </router-link>
     </div>
     <b-image v-bind:src="link"></b-image>
     <h2>{{ caption }}</h2>
@@ -30,6 +31,7 @@ export default {
       link: "",
       comments: [],
       username: "",
+      userId: null,
     };
   },
   methods: {

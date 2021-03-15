@@ -10,9 +10,12 @@
           shadow
           >Upload Photo</router-link
         >
-        <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item"
+        <router-link 
+          v-bind:to="{ name: 'photo-feed' }" 
+          class="navbar-item"
           >Photos</router-link
         >
+       
         <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"

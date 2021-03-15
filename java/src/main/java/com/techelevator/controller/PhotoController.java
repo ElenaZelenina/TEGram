@@ -39,6 +39,13 @@ public class PhotoController {
 
     }
 
+    @GetMapping("")
+    public List<Photo> returnALLPhotoS(){
+        List<Photo> allUsersPhotos = photoDAO.getAllPhotos();
+        return allUsersPhotos;
+
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("")
     public ResponseEntity<String> createPhoto(@Valid @RequestBody PhotoRequest getPhotoData) {
