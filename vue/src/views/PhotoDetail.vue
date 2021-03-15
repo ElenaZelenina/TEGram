@@ -2,7 +2,9 @@
   <div class="details">
     <div class="tags">
       <b-button type="is-success">&#10084; {{ likesCount }}</b-button>
-        <b-button type="is-info is-light"></b-button>
+      <b-button type="is-info is-light"
+               v-on:click="onFavoritedChange"
+               v-bind:class="{ active: favorite }">{{ favoriteButtonName }}</b-button>
       <router-link v-bind:to="'/photos?userId=' + userId">
         <b-button type="is-success">{{ username }}</b-button>
       </router-link>
@@ -34,17 +36,21 @@ export default {
       username: "",
       userId: null,
       favorite: false,
-      isActive: false
+      isActive: false,
     };
   },
   methods: {
     onFavoritedChange() {
-      if(!this.favorite) {
-        photoService.addFavorite(this.photoId).then(() => {this.favorite = true;});
+      if (!this.favorite) {
+        photoService.addFavorite(this.photoId).then(() => {
+          this.favorite = true;
+        });
       } else {
-        photoService.removeFavorite(this.photoId).then(() => {this.favorite = false;});
+        photoService.removeFavorite(this.photoId).then(() => {
+          this.favorite = false;
+        });
       }
-    },    
+    },
     retrievePhoto() {
       photoService.get(this.photoId).then((response) => {
         this.caption = response.data.caption;
@@ -60,7 +66,7 @@ export default {
           this.comments = response.data;
         });
         photoService.getFavorites().then((response) => {
-          const foundInResponse = response.data.find(photo => {
+          const foundInResponse = response.data.find((photo) => {
             return photo.id == this.photoId;
           });
           this.favorite = !!foundInResponse;
@@ -70,8 +76,8 @@ export default {
   },
   computed: {
     favoriteButtonName() {
-      return this.favorite ? "Favorite" : "Add to Favorites"
-    }
+      return this.favorite ? "Favorite" : "Add to Favorites";
+    },
   },
   created() {
     this.photoId = this.$route.params.id;
@@ -81,31 +87,30 @@ export default {
 </script>
 
 <style scoped>
-  .details {
-    max-width: 80%;
-    align-self: center;
-  }
-  h2 {
-    font-size: large;
-    font-weight: bold;
-    text-align: center;
-  }
-  .author {
-    font-weight: bold;
-  }
-  .tags {
-    display: flex;
-    justify-content: space-between;
-  }
-  .button.is-success {
-    background-color: #8CC63F;
-  }
-  .button.is-info.is-light {
-    color: #00ADEE;
-  }
-  .button.is-info.is-light.active {
-    background-color: #00adee;
-    color: white;
-  }
-
+.details {
+  max-width: 80%;
+  align-self: center;
+}
+h2 {
+  font-size: large;
+  font-weight: bold;
+  text-align: center;
+}
+.author {
+  font-weight: bold;
+}
+.tags {
+  display: flex;
+  justify-content: space-between;
+}
+.button.is-success {
+  background-color: #8cc63f;
+}
+.button.is-info.is-light {
+  color: #00adee;
+}
+.button.is-info.is-light.active {
+  background-color: #00adee;
+  color: white;
+}
 </style>
