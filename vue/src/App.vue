@@ -54,18 +54,19 @@
   align-items: center;
 }
 .navbar-brand {
-  width: 70px;
+  max-width: 70px;
   height: 70px;
   margin-left: 15px;
 }
 .navbar-item {
-  display: flex;
-  padding: 0 23px;
+  display: grid;
+  padding: 0 18px;
   border-radius: 9px;
   background-color: #00adee;
   margin-left: 10px;
   color: white;
   text-transform: uppercase;
+  
 }
 .navbar-item:hover {
   background-color: #8cc63f;
