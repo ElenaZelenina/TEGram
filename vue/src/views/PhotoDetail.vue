@@ -3,8 +3,8 @@
     <div class="tags">
       <b-button type="is-success">&#10084; {{ likesCount }}</b-button>
       <b-button type="is-info is-light"
-               v-on:click="onFavoritedChange"
-               v-bind:class="{ active: favorite }">{{ favoriteButtonName }}</b-button>
+              v-on:click="onFavoritedChange"
+              v-bind:class="{ active: favorite }">{{ favoriteButtonName }}</b-button>
       <router-link v-bind:to="'/photos?userId=' + userId">
         <b-button type="is-success">{{ username }}</b-button>
       </router-link>
