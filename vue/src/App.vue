@@ -21,6 +21,7 @@
           class="navbar-item"
           >Logout</router-link
         >
+
       </div>
       <img class="navbar-icon" src="../public/TEGram.png" alt="logo" />
     </div>
@@ -55,7 +56,7 @@
 }
 .navbar-brand {
   max-width: 70px;
-  height: 70px;
+  height: 40px;
   margin-left: 15px;
 }
 .navbar-item {

@@ -10,6 +10,8 @@
       >
       <router-link v-bind:to="'/photos?userId=' + userId">
         <b-button type="is-success">{{ username }}</b-button>
+        <router-link v-bind:to="'/user?userId/favorites=' + userId">
+        </router-link>
       </router-link>
     </div>
     <b-image v-bind:src="link"></b-image>
@@ -44,13 +46,13 @@ export default {
   },
   methods: {
     onFavoritedChange() {
-      if (!this.favorite) {
+      if (!this.favorites) {
         photoService.addFavorite(this.photoId).then(() => {
-          this.favorite = true;
+          this.favorites = true;
         });
       } else {
         photoService.removeFavorite(this.photoId).then(() => {
-          this.favorite = false;
+          this.favorites = false;
         });
       }
     },
@@ -72,16 +74,17 @@ export default {
           const foundInResponse = response.data.find((photo) => {
             return photo.id == this.photoId;
           });
-          this.favorite = !!foundInResponse;
+          this.favorites = !!foundInResponse;
         });
       });
     },
   },
   computed: {
     favoriteButtonName() {
-      return this.favorite ? "Favorite" : "Add to Favorites";
+      return this.favorites ? "Favorite" : "Add to Favorites";
     },
   },
+
   created() {
     this.photoId = this.$route.params.id;
     this.retrievePhoto();
@@ -117,3 +120,4 @@ h2 {
   color: white;
 }
 </style>
+

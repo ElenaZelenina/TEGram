@@ -29,13 +29,11 @@ import com.techelevator.model.PhotoRequest;
 @RestController
 @CrossOrigin()
 public class TestController {
-
     private PhotoDAO photoDAO;
     private UserDAO userDAO;
     private CommentDAO commentDAO;
     private PhotoCommentDAO photoCommentDAO;
     private FavoriteDAO favoriteDAO;
-
     public TestController(PhotoDAO photoDAO, UserDAO userDAO,
                           CommentDAO commentDAO, PhotoCommentDAO photoCommentDAO, FavoriteDAO favoriteDAO) {
         this.photoDAO = photoDAO;
@@ -44,7 +42,6 @@ public class TestController {
         this.photoCommentDAO = photoCommentDAO;
         this.favoriteDAO = favoriteDAO;
     }
-
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/testphotos", method = RequestMethod.POST)
     public boolean addPhoto(@Valid @RequestBody PhotoRequest request, Principal principal) {
@@ -53,40 +50,34 @@ public class TestController {
         photoAdded = (boolean) photoDAO.create(userId, request.getFileName(), request.getLink(), request.getCaption());
         return photoAdded;
     }
-
     @RequestMapping(path = "/tenphotos", method = RequestMethod.GET)
     public List<Photo> getTen() {
         List<Photo> photos = new ArrayList<>();
         photos = photoDAO.findTen();
         return photos;
     }
-
     @RequestMapping(path = "/photofeed", method = RequestMethod.GET)
     public List<PhotoComment> getAllPhotosOneComment() {
         List<PhotoComment> photos = new ArrayList<>();
         photos = photoCommentDAO.allPhotosOneComment();
         return photos;
     }
-
     @RequestMapping(path = "/photo/{id}/comments", method = RequestMethod.GET)
     public List<Comment> getCommentsForPhoto(@PathVariable int id) {
         List<Comment> comments = new ArrayList<>();
         comments = commentDAO.findCommentsForPhoto(id);
         return comments;
     }
-
     @RequestMapping(path = "/photo/{id}", method = RequestMethod.GET)
     public Photo getPhotoById(@PathVariable int id) {
         Photo photo = photoDAO.getPhotoById(id);
         return photo;
     }
-
     @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
     public String getUserNameByUserId(@PathVariable int id) {
         String userName = userDAO.getUserById(id).getUsername();
         return userName;
     }
-
     @RequestMapping(path = "/favorites", method = RequestMethod.GET)
     public List<Photo> getFavorites(Principal principal) {
         List<Photo> photos = new ArrayList<>();
@@ -94,14 +85,12 @@ public class TestController {
         photos = photoDAO.getFavoritePhotos(userId);
         return photos;
     }
-
     @RequestMapping(path = "/user/{id}/favorites", method = RequestMethod.GET)
     public List<Photo> getFavorites(@PathVariable int id) {
         List<Photo> photos = new ArrayList<>();
         photos = photoDAO.getFavoritePhotos(id);
         return photos;
     }
-
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/addfavorite/{id}", method = RequestMethod.POST)
     public boolean addFavorite(@Valid @PathVariable int id, Principal principal) {
@@ -110,7 +99,6 @@ public class TestController {
         favoriteAdded = favoriteDAO.create(userId, id);
         return favoriteAdded;
     }
-
     @RequestMapping(path = "/removefavorite/{id}", method = RequestMethod.DELETE)
     public boolean removeFavorite(@Valid @PathVariable int id, Principal principal) {
         int userId = userDAO.findIdByUsername(principal.getName());
@@ -118,5 +106,4 @@ public class TestController {
         favoriteRemoved = favoriteDAO.delete(userId, id);
         return favoriteRemoved;
     }
-
 }

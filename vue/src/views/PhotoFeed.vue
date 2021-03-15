@@ -22,19 +22,17 @@ export default {
   updated() {
     this.getPhotos();
   },
-
-    methods: {
+  methods: {
     getPhotos() {
-      console.log('query = ', this.$route.query)
+      console.log("query = ", this.$route.query);
       let photoPromise;
 
-      if(this.$route.query.userId) {
-        
-        photoPromise = photoService.listByUserId(
-          this.$route.query.userId);
+      if (this.$route.query.userId) {
+        photoPromise = photoService.listByUserId(this.$route.query.userId);
       } else {
         photoPromise = photoService.list();
       }
+
       photoPromise.then((response) => {
         this.$store.commit("SET_PHOTOS", response.data);
         this.photos = response.data;

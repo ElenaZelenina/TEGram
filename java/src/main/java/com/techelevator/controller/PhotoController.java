@@ -14,6 +14,7 @@ import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignReques
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 @RestController
 @CrossOrigin(origins="*")
@@ -27,18 +28,25 @@ public class PhotoController {
         this.photoDAO = photoDAO;
         this.userDAO = userDAO;
     }
-    
+
+    @GetMapping(path = "/users/{id}/lists/favorites")
+    public List<Photo> returnPhotoListByUserId(@PathVariable("id") int user_id ){
+        List<Photo> allUsersPhotos = photoDAO.getPhotoByUserIdAndFavorites(user_id);
+        return allUsersPhotos;
+
+    }
+
     @RequestMapping(path = "/users/{id}", method = RequestMethod.GET)
     public List<Photo> returnPhotoByUserId(@PathVariable("id") int user_id ){
         List<Photo> allUsersPhotos = photoDAO.getPhotoByUserId(user_id);
         return allUsersPhotos;
+
     }
 
     @GetMapping("")
     public List<Photo> returnALLPhotoS(){
         List<Photo> allUsersPhotos = photoDAO.getAllPhotos();
         return allUsersPhotos;
-
 
     }
 
@@ -50,6 +58,7 @@ public class PhotoController {
         }
         return new ResponseEntity<>("err", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
     @GetMapping("/uploadCredentials")
     public String getCredentialUpload(@RequestParam String keyName, @RequestParam String contentType) {
         S3Presigner presigner = S3Presigner.create();

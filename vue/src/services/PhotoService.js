@@ -17,18 +17,6 @@ const http = axios.create({
 });
 
 export default {
-  list() {
-    return http.get('/photos');
-  },
-  listByUserId(userId) {
-    return http.get(`/photos/users/${userId}`);
-  },
-  // listFavoritesByUserId(userId) {
-  //   return http.get(`/photos/users/${userId}/lists/favorites`);
-  // },
-  getTen() {
-    return http.get('/tenphotos');
-  },
   getPresignedUrl(fileName, fileType) {
     return http.get('/photos/uploadCredentials', {
       params:{
@@ -36,6 +24,28 @@ export default {
         contentType: fileType
       }
     });
+  },
+   // post photo metadata
+   create(photoMetadata) {
+    console.log('photoMetadata', photoMetadata);
+    return http.post(`/photos`, photoMetadata, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST'
+      }
+    });
+  },
+  list() {
+    return http.get('/photos');
+  },
+  listByUserId(userId) {
+    return http.get(`/photos/users/${userId}`);
+  },
+  listFavoritesByUserId(userId) {
+    return http.get(`/photos/users/${userId}/lists/favorites`);
+  },
+  getTen() {
+    return http.get('/tenphotos');
   },
   getComments(id){
     return http.get(`/photo/${id}/comments`);
@@ -45,17 +55,6 @@ export default {
   },
   getUsername(id){
     return http.get(`/user/${id}`);
-  },
-
-  // post photo metadata
-  create(photoMetadata) {
-    console.log('photoMetadata', photoMetadata);
-    return http.post(`/photos`, photoMetadata, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST'
-      }
-    });
   },
   getFavorites() {
     return axios.get('/favorites');
@@ -71,5 +70,5 @@ export default {
   },
   delete(id) {
     return http.delete(`/docs/${id}`);
-  }
+  },
 }
