@@ -23,6 +23,18 @@ public class PhotoSqlDAO implements PhotoDAO {
 	}
 
 	@Override
+	public List<Photo> getAllPhotos() {
+	   List<Photo> listOfPhotos = new ArrayList<Photo>();
+	   String sql = "select * from photo";
+	   SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+	   while (results.next()) {
+	      Photo photo = mapRowToPhoto(results);
+	      listOfPhotos.add(photo);
+	   }
+	   return listOfPhotos;
+	}
+	
+	@Override
 	public List<Photo> getPhotoByUserId(int user_id) {
 		List<Photo> listOfPhotos = new ArrayList<Photo>();
 		String sql = "select * from photo where user_id = ?";

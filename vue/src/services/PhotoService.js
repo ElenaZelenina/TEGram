@@ -18,6 +18,12 @@ const http = axios.create({
 
 export default {
   list() {
+    return http.get('/photos');
+  },
+  listByUserId(userId) {
+    return http.get(`/photos/users/${userId}`);
+  },
+  list() {
     return http.get('/photofeed');
   },
   getTen() {

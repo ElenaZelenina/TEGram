@@ -8,6 +8,9 @@ public interface PhotoDAO {
 	
 	List<Photo> findTen();
 	
+	List<Photo> getAllPhotos();
+	
+	
 	Photo getPhotoById(int photoId);
 	
 	boolean create(int user_id, String fileName, String link, String caption);

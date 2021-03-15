@@ -22,6 +22,7 @@
       </div>
       <p class="likes">{{ post.likes }} likes</p>
       <p class="caption">
+        <router-link v-bind:to="'/photo/' + photo.id">
         <span>{{ post.username }}</span> {{ post.caption }}
       </p>
     </div>
