@@ -10,7 +10,7 @@
     </div>
     <div class="heart">
         <a class="far fa-heart fa-lg"
-          v-on="{'fas': this.post.hasBeenLiked}"
+          v-bind:class="{'fas': this.favorite}"
           @click="like">
         </a>
       </div>
@@ -45,6 +45,7 @@ export default {
     };
   },
   methods: {
+    //This is adding the 'liked' photo to the Favorite's list
     onFavoritedChange() {
       if(!this.favorite) {
         photoService.addFavorite(this.photoId).then(() => {this.favorite = true;});
@@ -74,6 +75,12 @@ export default {
         });
       });
     },
+      like() {
+    this.favorite
+    ? this.likes--
+    : this.likes++;
+    this.favorite = !this.favorite;
+  }
   },
   computed: {
     favoriteButtonName() {
@@ -84,12 +91,6 @@ export default {
     this.photoId = this.$route.params.id;
     this.retrievePhoto();
   },
-  like() {
-    this.post.hasBeenLiked
-    ? this.post.likes--
-    : this.post.likes++;
-    this.post.hasBeenLiked = !this.post.hasBeenLiked;
-  }
 };
 </script>
 
