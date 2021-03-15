@@ -77,6 +77,7 @@ CREATE TABLE favorites (
 	date_time timestamp,
 	PRIMARY KEY(user_id, photo_id)
 );
+select * from favorites;
 
 
 

@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <div id="nav">
+      <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo" />
       <div class="navbar">
-        <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo" />
+        
         <router-link
           v-bind:to="{ name: 'home' }"
           class="navbar-item"
-          spaced
-          shadow
           >Upload Photo</router-link
         >
-        <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item"
+        <router-link 
+          v-bind:to="{ name: 'photo-feed' }" 
+          class="navbar-item"
           >Photos</router-link
         >
+       
         <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
@@ -45,12 +47,6 @@
   display: flex;
   flex-direction: column;
 }
-/* .navbar {
-  display: flex;
-  align-items: baseline-position;
-  min-width: 300px;
-  width: 200px;
-} */
 #nav {
   display: flex;
 
@@ -58,11 +54,13 @@
   align-items: center;
 }
 .navbar-brand {
-  width: 50px;
+  width: 70px;
+  height: 70px;
+  margin-left: 15px;
 }
 .navbar-item {
   display: flex;
-  padding: 0 33px;
+  padding: 0 23px;
   border-radius: 9px;
   background-color: #00adee;
   margin-left: 10px;

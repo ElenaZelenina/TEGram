@@ -19,9 +19,23 @@ export default {
   created() {
     this.getPhotos();
   },
-  methods: {
+  updated() {
+    this.getPhotos();
+  },
+
+    methods: {
     getPhotos() {
-      photoService.list().then((response) => {
+      console.log('query = ', this.$route.query)
+      let photoPromise;
+
+      if(this.$route.query.userId) {
+        
+        photoPromise = photoService.listByUserId(
+          this.$route.query.userId);
+      } else {
+        photoPromise = photoService.list();
+      }
+      photoPromise.then((response) => {
         this.$store.commit("SET_PHOTOS", response.data);
         this.photos = response.data;
       });
@@ -29,6 +43,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
