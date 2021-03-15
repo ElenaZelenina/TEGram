@@ -1,37 +1,39 @@
-
 <template>
   <div id="photo-page">
     <div id="photo-chooser" class="">
-      <label id="file-label"
-        >File:
-        <input
-          type="file"
-          id="file"
-          ref="file"
-          v-on:change="handleFileUpload"
-        />
-      </label>
+      <button class="upload-button" v-on:click="picFile">Add Photo</button>
+      <input
+        hidden
+        type="file"
+        id="file"
+        ref="file"
+        v-on:change="handleFileUpload"
+      />
     </div>
+
     <div id="photo-display">
-      <div>
-        <img id="imageView" />
-      </div>
-      <div id="caption-box" v-show="files != null">
-        <label
-          >Add Photo Caption
-          <textarea
-            id="caption"
-            name="caption"
-            rows="6"
-            cols="20"
-            maxlength="156"
-            wrap="hard"
-            v-if="files != null"
-            v-on:change="handleCaptionChanged"
-            v-model="caption"
-          ></textarea>
-        </label>
-        <button id="submit-btn" v-on:click.prevent="submitFile">Submit</button>
+      <div id="vertical-align">
+        <div>
+          <img id="imageView" />
+        </div>
+        <div id="caption-box" v-show="files != null">
+          <label
+            >Add Photo Caption
+            <textarea
+              id="caption"
+              name="caption"
+              rows="1"
+              maxlength="156"
+              wrap="hard"
+              v-if="files != null"
+              v-on:change="handleCaptionChanged"
+              v-model="caption"
+            ></textarea>
+          </label>
+          <button id="submit-btn" v-on:click.prevent="submitFile">
+            Click to Submit Photo
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -56,6 +58,12 @@ export default {
         of then functions, returns promise in the callbacks
         in the then function
       */
+
+    // calls the file click above
+    picFile() {
+      this.$refs.file.click();
+    },
+
     async submitFile() {
       try {
         // upload this photo to S3
@@ -110,43 +118,54 @@ export default {
     },
   },
 };
-//   handleSubmitButton() {
-
-//     button.style.visibility = "hidden";
-//   }
-// }
 </script>
 <style scoped>
 #photo-page {
   color: white;
-  width: 100%;
-  height: 100%;
+  height: 2000px;
   background-color: #00adee;
 }
 #photo-chooser {
   text-align: center;
   margin: 20px auto;
+  padding: 20px 0;
+    margin: 2rem 1rem 1rem 1rem;
+
 }
 #file-label {
   padding-left: 100px;
 }
 #photo-display {
   text-align: center;
+  position: relative;
 }
 #imageView {
-  display: block;
-  margin: 0 auto;
-  height: 360px;
+  height: 475px;
   width: auto;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  margin: 0 2rem 2rem 2rem;
 }
 #caption-box {
-  max-width: 750px;
+  max-width: 550px;
   width: auto;
   margin: 0 auto;
-  padding: 30px 0;
+  padding: 5px 0; 
+}
+.upload-button {
+  padding: 0 33px;
+  border-radius: 9px;
+  background-color: #8cc63f;
+  color: white;
+  text-transform: uppercase;
+  height: 50px;
 }
 #caption-box textarea {
   background-color: white;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  padding: 20px 0px 20px 0px;
+   border-radius: 10px;
 }
 #caption {
   -webkit-box-sizing: border-box;
@@ -155,7 +174,11 @@ export default {
   width: 100%;
   display: block;
   margin: auto;
-  padding: 10px 0;
+  
+}
+#caption-box label {
+  font-size: large;
+  font-weight: bold;
 }
 #submit-btn {
   color: white;
@@ -163,5 +186,10 @@ export default {
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
+}
+#vertical-align {
+  
+  padding-top: 1%;
+
 }
 </style>

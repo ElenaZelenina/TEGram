@@ -34,3 +34,5 @@ join users as u1 ON u1.user_id = photo.user_id
 left join comment c1 on c1.photo_id = photo.photo_id
 
 ;
+
+SELECT * FROM photo ORDER BY date_time DESC LIMIT 10;

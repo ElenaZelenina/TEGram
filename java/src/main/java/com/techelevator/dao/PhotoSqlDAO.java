@@ -58,6 +58,21 @@ public class PhotoSqlDAO implements PhotoDAO {
 			throw new RuntimeException("Photo ID " + photoId + "was not found.");
 		}
 	}
+	
+
+	@Override
+	public List<Photo> getFavoritePhotos(int userId) {
+		List<Photo> photos = new ArrayList<>();
+		String sql = "SELECT * FROM photo JOIN favorites ON photo.photo_id = favorites.photo_id "
+				+ "WHERE favorites.user_id  = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+		while(results.next()) {
+			Photo photo = mapRowToPhoto(results);
+			photos.add(photo);
+		}
+		
+		return photos;
+	}
 
 	@Override
 	public boolean create(int user_id, String fileName, String link, String caption) {

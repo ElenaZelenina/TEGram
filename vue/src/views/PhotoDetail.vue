@@ -71,20 +71,27 @@ export default {
 </script>
 
 <style scoped>
-.details {
-  max-width: 80%;
-  align-self: center;
-}
-h2 {
-  font-size: large;
-  font-weight: bold;
-  text-align: center;
-}
-.author {
-  font-weight: bold;
-}
-.tags {
-  display: flex;
-  justify-content: space-between;
-}
+  .details {
+    max-width: 80%;
+    align-self: center;
+  }
+  h2 {
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+  }
+  .author {
+    font-weight: bold;
+  }
+  .tags {
+    display: flex;
+    justify-content: space-between;
+  }
+  .button.is-success {
+    background-color: #8CC63F;
+  }
+  .button.is-info.is-light {
+    color: #00ADEE;
+  }
+
 </style>

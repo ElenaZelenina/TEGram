@@ -8,7 +8,7 @@
           class="navbar-item"
           spaced
           shadow
-          >Home</router-link
+          >Upload Photo</router-link
         >
         <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item"
           >Photos</router-link
@@ -45,12 +45,12 @@
   display: flex;
   flex-direction: column;
 }
-.navbar {
+/* .navbar {
   display: flex;
   align-items: baseline-position;
   min-width: 300px;
   width: 200px;
-}
+} */
 #nav {
   display: flex;
 
