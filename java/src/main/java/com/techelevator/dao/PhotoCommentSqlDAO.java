@@ -54,7 +54,7 @@ public class PhotoCommentSqlDAO implements PhotoCommentDAO {
 
 	private PhotoComment mapRowToPhotoComment(SqlRowSet rs) {
 		PhotoComment pc = new PhotoComment();
-		pc.setPhotoId(rs.getInt("photo_id"));
+		pc.setId(rs.getInt("photo_id"));
 		pc.setLink(rs.getString("link"));
 		pc.setCaption(rs.getString("caption"));
 		pc.setLikesCount(rs.getInt("likes_count"));

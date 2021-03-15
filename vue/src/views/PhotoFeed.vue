@@ -1,5 +1,5 @@
 <template>
-  <photo-list v-bind:photos="photos" class="photolist"></photo-list>
+  <photo-list v-bind:photos="photos" v-bind:username="username" class="photolist"></photo-list>
 </template>
 
 <script>
@@ -14,25 +14,35 @@ export default {
   data() {
     return {
       photos: [],
+      username: '',
     };
   },
   created() {
     this.getPhotos();
-  },
+  },/*
   updated() {
     this.getPhotos();
+  },*/
+  
+  watch: {
+    $route(to, from) {
+      this.getPhotos();
+    }
   },
-
-    methods: {
+  methods: {
     getPhotos() {
       console.log('query = ', this.$route.query)
       let photoPromise;
 
       if(this.$route.query.userId) {
-        
+        // get username
+        photoService.getUsername(this.$route.query.userId).then((response) => {
+          this.username = response.data;
+        });
         photoPromise = photoService.listByUserId(
           this.$route.query.userId);
       } else {
+        this.username = '';
         photoPromise = photoService.list();
       }
       photoPromise.then((response) => {

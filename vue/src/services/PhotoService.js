@@ -18,7 +18,7 @@ const http = axios.create({
 
 export default {
   list() {
-    return http.get('/photos');
+    return http.get('/photofeed');
   },
   listByUserId(userId) {
     return http.get(`/photos/users/${userId}`);
