@@ -15,7 +15,7 @@
           >Photos</router-link
         >
         <router-link 
-          v-bind:to="{ name: 'photo-feed' }" 
+          v-bind:to="{ name: 'favorites' }" 
           class="navbar-item"
           >Favorites</router-link
         >

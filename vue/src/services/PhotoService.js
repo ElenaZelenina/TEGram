@@ -23,9 +23,9 @@ export default {
   listByUserId(userId) {
     return http.get(`/photos/users/${userId}`);
   },
-  // listFavoritesByUserId(userId) {
-  //   return http.get(`/photos/users/${userId}/lists/favorites`);
-  // },
+  listFavoritesByUser() {
+    return axios.get(`/favorites`);
+  },
   getTen() {
     return http.get('/tenphotos');
   },

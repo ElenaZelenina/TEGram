@@ -8,6 +8,7 @@ import store from '../store/index'
 import Carousel from '../components/Carousel'
 import PhotoFeed from '../views/PhotoFeed'
 import PhotoDetail from '../views/PhotoDetail'
+import Favorites from '../views/Favorites'
 
 import Upload from '../views/Upload.vue'
 
@@ -85,7 +86,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    
+    {
+      path: '/favorites',
+      name: 'favorites',
+      component: Favorites,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 
