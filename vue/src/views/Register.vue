@@ -5,7 +5,7 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <b-field label="Username" class="sr-only">
+      <b-field label="Username">
         <b-input
           type="text"
           id="username"
@@ -15,7 +15,7 @@
           required
           autofocus
       /></b-field>
-      <b-field label="Password" class="sr-only">
+      <b-field label="Password">
         <b-input
           type="password"
           id="password"
