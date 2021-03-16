@@ -4,6 +4,7 @@
     <section class="photolist">
       <div v-for="photo in photos" v-bind:key="photo.id">
         <router-link v-bind:to="'/photo/' + photo.id">
+        <b-tag type="is-success" class="like">&#10084; {{ photo.likesCount }}</b-tag>
           <b-image
             class="photo"
             v-bind:src="photo.link"
@@ -61,5 +62,10 @@ export default {
 }
 .tag.is-success {
   background-color: #8cc63f;
+}
+.like {
+  display: flex;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 </style>

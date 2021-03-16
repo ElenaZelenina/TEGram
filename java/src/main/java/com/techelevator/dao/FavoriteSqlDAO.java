@@ -18,7 +18,7 @@ public class FavoriteSqlDAO implements FavoriteDAO {
 	public boolean create(int userId, int photoId) {
 		boolean favoriteCreated = false;
 		LocalDateTime dateTime = LocalDateTime.now();
-		String insertFavorite = "INSERT INTO favorites (photo_id, user_id, date_time) " + "VALUES (?, ?, ?)";
+		String insertFavorite = "INSERT INTO favorites (photo_id, user_id, date_time) VALUES (?, ?, ?)";
 		favoriteCreated = jdbcTemplate.update(con -> {
 			PreparedStatement ps = con.prepareStatement(insertFavorite);
 			ps.setInt(1, photoId);

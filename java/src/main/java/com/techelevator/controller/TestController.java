@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +19,7 @@ import com.techelevator.dao.PhotoDAO;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.dao.CommentDAO;
 import com.techelevator.dao.FavoriteDAO;
+import com.techelevator.dao.LikeDAO;
 import com.techelevator.dao.PhotoCommentDAO;
 import com.techelevator.model.Comment;
 import com.techelevator.model.Photo;
@@ -34,13 +34,16 @@ public class TestController {
     private CommentDAO commentDAO;
     private PhotoCommentDAO photoCommentDAO;
     private FavoriteDAO favoriteDAO;
-    public TestController(PhotoDAO photoDAO, UserDAO userDAO,
-                          CommentDAO commentDAO, PhotoCommentDAO photoCommentDAO, FavoriteDAO favoriteDAO) {
+    private LikeDAO likeDAO;
+    
+    public TestController(PhotoDAO photoDAO, UserDAO userDAO, CommentDAO commentDAO, 
+    		PhotoCommentDAO photoCommentDAO, FavoriteDAO favoriteDAO, LikeDAO likeDAO) {
         this.photoDAO = photoDAO;
         this.userDAO = userDAO;
         this.commentDAO = commentDAO;
         this.photoCommentDAO = photoCommentDAO;
         this.favoriteDAO = favoriteDAO;
+        this.likeDAO = likeDAO;
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/testphotos", method = RequestMethod.POST)
@@ -106,4 +109,21 @@ public class TestController {
         favoriteRemoved = favoriteDAO.delete(userId, id);
         return favoriteRemoved;
     }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/like/{id}", method = RequestMethod.POST)
+    public boolean addLike(@Valid @PathVariable int id, Principal principal) {
+        int userId = userDAO.findIdByUsername(principal.getName());
+        boolean likeAdded = false;
+        likeAdded = likeDAO.create(userId, id);
+        return likeAdded;
+    }
+    @RequestMapping(path = "/unlike/{id}", method = RequestMethod.DELETE)
+    public boolean removeLike(@Valid @PathVariable int id, Principal principal) {
+        int userId = userDAO.findIdByUsername(principal.getName());
+        boolean likeRemoved = false;
+        likeRemoved = likeDAO.delete(userId, id);
+        return likeRemoved;
+    }
+    
+    
 }
