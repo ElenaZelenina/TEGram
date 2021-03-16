@@ -14,18 +14,14 @@
         </router-link>
       </router-link>
     </div>
-    
+
     <div class="heart">
-
-        <a class="far fa-heart fa-lg"
-          v-bind:class="{'fas': this.favorite}"
-          @click="like">
-          
-
-        </a>
-        
- 
-      </div>
+      <a
+        @click="like"
+      >
+        <vue-fontawesome class="far fa-lg" :icon="[this.favorite? 'fas':'far','heart']"></vue-fontawesome>
+      </a>
+    </div>
     <b-image v-bind:src="link"></b-image>
     <h2>{{ caption }}</h2>
     <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
@@ -91,16 +87,10 @@ export default {
         });
       });
     },
-      like() {
-    this.favorite
-    ? this.likes--
-    : this.likes++;
-    this.favorite = !this.favorite;
-  },
-  onClick() {
-    clicks += 1;
-    document.getElementById("clicks").innerHTML = clicks;
-  },
+    like() {
+      this.favorite ? this.likes-- : this.likes++;
+      this.favorite = !this.favorite;
+    },
   },
   computed: {
     favoriteButtonName() {
@@ -112,8 +102,6 @@ export default {
     this.photoId = this.$route.params.id;
     this.retrievePhoto();
   },
-
- 
 };
 </script>
 
@@ -145,4 +133,3 @@ h2 {
   color: white;
 }
 </style>
-
