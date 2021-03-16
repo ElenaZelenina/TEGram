@@ -1,33 +1,35 @@
 <template>
-  <section class="photolist">
-    <div v-for="photo in photos" v-bind:key="photo.id">
-      <router-link v-bind:to="'/photo/' + photo.id">
-        <b-image
-          class="photo"
-          v-bind:src="photo.link"
-          webp-fallback=".jpg"
-          ratio="16by9"
-        ></b-image>
-        <p class="caption">{{ photo.caption }}</p>
-      </router-link>
-      <div v-show="photo.commentUsername" class="comment">
-        <div class="author">
-          Most recent comment by {{ photo.commentUsername }} on
-          {{ photo.commentDateTime }}
+  <div class="list">
+    <b-tag class="username" type="is-success" size="is-large" v-show="username">{{ username }}</b-tag>
+    <section class="photolist">
+      <div v-for="photo in photos" v-bind:key="photo.id">
+        <router-link v-bind:to="'/photo/' + photo.id">
+          <b-image
+            class="photo"
+            v-bind:src="photo.link"
+            webp-fallback=".jpg"
+            ratio="16by9"
+          ></b-image>
+          <p class="caption">{{ photo.caption }}</p>
+        </router-link>
+        <div v-show="photo.commentUsername" class="comment">
+          <div class="author">
+            Most recent comment by {{ photo.commentUsername }} on
+            {{ photo.commentDateTime }}
+          </div>
+          {{ photo.message }}
         </div>
-        {{ photo.message }}
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>
 export default {
   name: "photo-list",
-  props: ["photos"],
+  props: ["photos", "username"],
   data() {
-    return {
-    };
+    return {};
   },
 };
 </script>
@@ -49,5 +51,15 @@ export default {
 .caption {
   font-weight: bold;
   text-align: center;
+}
+.list {
+  display: inline-block;
+  text-align: right;
+}
+.username {  
+  margin: 1rem;
+}
+.tag.is-success {
+  background-color: #8cc63f;
 }
 </style>

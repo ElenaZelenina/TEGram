@@ -14,6 +14,18 @@
         </router-link>
       </router-link>
     </div>
+    
+    <div class="heart">
+
+        <a class="far fa-heart fa-lg"
+          v-bind:class="{'fas': this.favorite}"
+          @click="like">
+          
+
+        </a>
+        
+ 
+      </div>
     <b-image v-bind:src="link"></b-image>
     <h2>{{ caption }}</h2>
     <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
@@ -45,6 +57,7 @@ export default {
     };
   },
   methods: {
+    //This is adding the 'liked' photo to the Favorite's list
     onFavoritedChange() {
       if (!this.favorites) {
         photoService.addFavorite(this.photoId).then(() => {
@@ -78,6 +91,16 @@ export default {
         });
       });
     },
+      like() {
+    this.favorite
+    ? this.likes--
+    : this.likes++;
+    this.favorite = !this.favorite;
+  },
+  onClick() {
+    clicks += 1;
+    document.getElementById("clicks").innerHTML = clicks;
+  },
   },
   computed: {
     favoriteButtonName() {
@@ -89,6 +112,8 @@ export default {
     this.photoId = this.$route.params.id;
     this.retrievePhoto();
   },
+
+ 
 };
 </script>
 

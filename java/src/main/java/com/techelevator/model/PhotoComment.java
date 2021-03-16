@@ -3,7 +3,7 @@ package com.techelevator.model;
 import java.util.Date;
 
 public class PhotoComment {
-	private int photoId;
+	private int id;
 	private String link;
 	private String caption;
 	private int likesCount;
@@ -12,11 +12,11 @@ public class PhotoComment {
 	private String photoUsername;
 	private String commentUsername;
 	
-	public int getPhotoId() {
-		return photoId;
+	public int getId() {
+		return id;
 	}
-	public void setPhotoId(int photoId) {
-		this.photoId = photoId;
+	public void setId(int photoId) {
+		this.id = photoId;
 	}
 	public String getLink() {
 		return link;

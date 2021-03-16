@@ -29,12 +29,6 @@ public class PhotoController {
         this.userDAO = userDAO;
     }
 
-    @GetMapping(path = "/users/{id}/lists/favorites")
-    public List<Photo> returnPhotoListByUserId(@PathVariable("id") int user_id ){
-        List<Photo> allUsersPhotos = photoDAO.getPhotoByUserIdAndFavorites(user_id);
-        return allUsersPhotos;
-
-    }
 
     @RequestMapping(path = "/users/{id}", method = RequestMethod.GET)
     public List<Photo> returnPhotoByUserId(@PathVariable("id") int user_id ){

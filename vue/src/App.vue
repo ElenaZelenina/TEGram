@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav">
-      <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo" />
       <div class="navbar">
+      <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo" />
         
         <router-link
           v-bind:to="{ name: 'home' }"
@@ -13,6 +13,11 @@
           v-bind:to="{ name: 'photo-feed' }" 
           class="navbar-item"
           >Photos</router-link
+        >
+        <router-link 
+          v-bind:to="{ name: 'photo-feed' }" 
+          class="navbar-item"
+          >Favorites</router-link
         >
        
         <router-link
@@ -49,25 +54,34 @@
   flex-direction: column;
 }
 #nav {
+  width: 100%;
   display: flex;
-
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding-bottom: 10px;
+}
+.navbar {
+  display: inline;
+  position: relative;
 }
 .navbar-brand {
+  display: inline;
   max-width: 70px;
-  height: 40px;
+  height: auto;
   margin-left: 15px;
 }
 .navbar-item {
-  display: grid;
-  padding: 0 18px;
+  display: inline;
+  max-width: 10em;
+  padding: 0.3em 0.5em;
   border-radius: 9px;
   background-color: #00adee;
-  margin-left: 10px;
+  max-height: 3em;
+  margin: 0 .2em;
   color: white;
   text-transform: uppercase;
-  
+  border: #8cc63f bold;
+  white-space: nowrap;
 }
 .navbar-item:hover {
   background-color: #8cc63f;
@@ -78,6 +92,7 @@
   position: relative;
 }
 .navbar-icon {
+  display: inline;
   height: auto;
   max-width: 300px;
 }
@@ -86,5 +101,36 @@
   justify-content: center;
   margin-left: 20%;
   padding: auto;
+}
+.navbar-item-1 {
+  background-color: #00adee;
+}
+.navbar-item-2 {
+  background-color: #8cc63f ;
+}
+.navbar-item-3 {
+  background-color: #00adee;
+}
+@media screen and (max-width: 810px) {
+  #app {
+    font-size: 10px;
+  }
+  .navbar-icon {
+    max-width: 150px;
+  }
+  .navbar-brand {
+    max-height: 40px;
+  }
+  @media screen and (min-width: 650px) {
+    #app {
+      font-size: 13px;
+    }
+    .navbar-icon {
+      max-width: 200px;
+    }
+    .navbar-brand {
+      max-height: 40px;
+    }
+  }
 }
 </style>
