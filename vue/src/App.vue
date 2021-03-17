@@ -72,7 +72,7 @@
 }
 .navbar-item {
   display: inline;
-  max-width: 10em;
+  max-width: 0em;
   padding: 0.3em 0.5em;
   border-radius: 9px;
   background-color: #00adee;

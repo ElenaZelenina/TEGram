@@ -17,7 +17,7 @@
 
     <div class="heart">
       <a
-        @click="like"
+        v-on:click.prevent="onFavoritedChange"
       >
         <vue-fontawesome class="far fa-lg" :icon="[this.favorite? 'fas':'far','heart']"></vue-fontawesome>
       </a>
@@ -56,11 +56,14 @@ export default {
     //This is adding the 'liked' photo to the Favorite's list
     onFavoritedChange() {
       if (!this.favorites) {
-        photoService.addFavorite(this.photoId).then(() => {
+        photoService.addFavorite(this.photoId).then((result) => {
+          // this.likesCount = result.data.count  (how it is in the db)
           this.favorites = true;
         });
       } else {
         photoService.removeFavorite(this.photoId).then(() => {
+          // this.likesCount = result.data.count  (how it is in the db)
+         
           this.favorites = false;
         });
       }
@@ -87,10 +90,10 @@ export default {
         });
       });
     },
-    like() {
-      this.favorite ? this.likes-- : this.likes++;
-      this.favorite = !this.favorite;
-    },
+    // like() {
+    //   this.favorite ? this.likes-- : this.likes++;
+    //   this.favorite = !this.favorite;
+    // },
   },
   computed: {
     favoriteButtonName() {
