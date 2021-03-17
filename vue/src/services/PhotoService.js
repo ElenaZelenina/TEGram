@@ -66,10 +66,16 @@ export default {
   removeFavorite(photoId) {
     return axios.delete(`/removefavorite/${photoId}`);
   },
-  update(id, doc) {
+  like(photoId) {
+    return axios.post(`/like/${photoId}`);
+  },
+  unlike(photoId) {
+    return axios.post(`/unlike/${photoId}`);
+  },
+/*  update(id, doc) {
     return http.put(`/docs/${id}`, doc);
   },
   delete(id) {
     return http.delete(`/docs/${id}`);
-  }
+  }  */
 }

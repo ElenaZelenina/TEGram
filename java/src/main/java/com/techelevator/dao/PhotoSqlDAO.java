@@ -72,7 +72,6 @@ public class PhotoSqlDAO implements PhotoDAO {
 			throw new RuntimeException("Photo ID " + photoId + "was not found.");
 		}
 	}
-	
 
 	@Override
 	public List<Photo> getFavoritePhotos(int userId) {
@@ -87,7 +86,23 @@ public class PhotoSqlDAO implements PhotoDAO {
 		
 		return photos;
 	}
+	
+	@Override
+	public boolean like(int photoId) {
+		boolean likesUpdated = false;
+		String insertLikesNumber = "UPDATE photo SET likes_count = (likes_count + 1) WHERE photo_id = ?";
+		likesUpdated = jdbcTemplate.update(insertLikesNumber, photoId) == 1;
+		return likesUpdated;
+	}
 
+	@Override
+	public boolean unlike(int photoId) {
+		boolean likesUpdated = false;
+		String insertLikesNumber = "UPDATE photo SET likes_count = (likes_count - 1) WHERE photo_id = ?";
+		likesUpdated = jdbcTemplate.update(insertLikesNumber, photoId) == 1;
+		return likesUpdated;
+	}
+	
 	@Override
 	public boolean create(int user_id, String fileName, String link, String caption) {
 		boolean photoCreated = false;

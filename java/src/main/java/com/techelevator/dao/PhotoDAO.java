@@ -17,4 +17,8 @@ public interface PhotoDAO {
 	List<Photo> getPhotoByUserId(int user_id);
 
 	List<Photo> getFavoritePhotos(int user_id);
+	
+	public boolean like(int photoId);
+
+	public boolean unlike(int photoId);
 }
