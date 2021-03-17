@@ -1,29 +1,22 @@
 <template>
   <div class="details">
     <div class="tags">
-      <b-button type="is-success">&#10084; {{ likesCount }}</b-button>
-      <b-button
-        type="is-info is-light"
-        v-on:click="onFavoritedChange"
-        v-bind:class="{ active: favorite }"
-        >{{ favoriteButtonName }}</b-button
+      <b-button type="is-success" v-on:click="onFavoritedChange">
+        <vue-fontawesome
+          class=""
+          :icon="[this.favorites ? 'fas' : 'far', 'heart']"
+        ></vue-fontawesome>
+        {{ likesCount }}</b-button
       >
+
       <router-link v-bind:to="'/photos?userId=' + userId">
         <b-button type="is-success">{{ username }}</b-button>
-        <router-link v-bind:to="'/user?userId/favorites=' + userId">
-        </router-link>
       </router-link>
     </div>
 
-    <div class="heart">
-      <a
-        @click="like"
-      >
-        <vue-fontawesome class="far fa-lg" :icon="[this.favorite? 'fas':'far','heart']"></vue-fontawesome>
-      </a>
-    </div>
     <b-image v-bind:src="link"></b-image>
     <h2>{{ caption }}</h2>
+
     <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
       <div class="author">
         Comment by {{ comment.username }} on {{ comment.dateTime }}
@@ -48,7 +41,7 @@ export default {
       comments: [],
       username: "",
       userId: null,
-      favorite: false,
+      favorites: false,
       isActive: false,
     };
   },
@@ -56,12 +49,16 @@ export default {
     //This is adding the 'liked' photo to the Favorite's list
     onFavoritedChange() {
       if (!this.favorites) {
+        this.favorites = true;
+        this.likesCount++;
         photoService.addFavorite(this.photoId).then(() => {
-          this.favorites = true;
+          photoService.like(this.photoId);
         });
       } else {
+        this.favorites = false;
+        this.likesCount--;
         photoService.removeFavorite(this.photoId).then(() => {
-          this.favorites = false;
+          photoService.unlike(this.photoId);
         });
       }
     },
@@ -87,17 +84,7 @@ export default {
         });
       });
     },
-    like() {
-      this.favorite ? this.likes-- : this.likes++;
-      this.favorite = !this.favorite;
-    },
   },
-  computed: {
-    favoriteButtonName() {
-      return this.favorites ? "Favorite" : "Add to Favorites";
-    },
-  },
-
   created() {
     this.photoId = this.$route.params.id;
     this.retrievePhoto();

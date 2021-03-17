@@ -114,14 +114,18 @@ public class TestController {
     public boolean addLike(@Valid @PathVariable int id, Principal principal) {
         int userId = userDAO.findIdByUsername(principal.getName());
         boolean likeAdded = false;
-        likeAdded = likeDAO.create(userId, id);
+        if(likeDAO.create(userId, id) && photoDAO.like(id)) {
+        	likeAdded = true;
+        }
         return likeAdded;
     }
-    @RequestMapping(path = "/unlike/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/unlike/{id}", method = RequestMethod.POST)
     public boolean removeLike(@Valid @PathVariable int id, Principal principal) {
         int userId = userDAO.findIdByUsername(principal.getName());
         boolean likeRemoved = false;
-        likeRemoved = likeDAO.delete(userId, id);
+        if(likeDAO.delete(userId, id) && photoDAO.unlike(id)) {
+        	likeRemoved = true;
+        }
         return likeRemoved;
     }
     
