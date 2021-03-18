@@ -62,7 +62,8 @@ export default {
 }
 .tag.is-success {
   background-color: #8cc63f;
-  font-size: x-large;
+  font-size: large;
+  font-weight: bold;
 }
 .like {
   display: flex;

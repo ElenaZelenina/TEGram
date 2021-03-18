@@ -249,5 +249,36 @@ environment variables for aws
       font-size: small;
     }
   }
+  @media screen and (min-width: 350px) {
+    #app {
+      font-size: 10px;
+    }
+    .navbar {
+        padding-top: 25px;
+
+    }
+
+    .navbar-icon {
+      max-width: 95px;
+    }
+    .navbar-brand {
+      max-width: 45px;
+      padding-bottom: 5px;
+    }
+    .navbar-item {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      border-radius: 9px;
+      background-color: #00adee;
+      max-height: 1em;
+      color: white;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-right: 10px;
+      padding-left: 10px;
+      height: 10px;
+      font-size: small;
+    }
+  }
 }
 </style>
