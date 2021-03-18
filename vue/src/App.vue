@@ -100,9 +100,40 @@ environment variables for aws
   padding: auto;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and(max-width: 970) {
+
+   .navbar-item {
+    margin: 0px 20px;
+
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 9px;
+    background-color: #00adee;
+    max-height: 3em;
+    margin: 0.3em 0.3em;
+    color: white;
+    text-transform: uppercase;
+    font-size: large;
+    white-space: nowrap;
+    margin-top: 15px;
+    height: 20px;
+  }
+
+  .navbar-icon {
+    max-width: 150px;
+  }
+  .navbar-brand {
+    max-height: 40px;
+  }
+}
+@media screen and (max-width: 910px) {
   #app {
     font-size: 10px;
+  }
+  #nav {
+    margin-top: 25px;
   }
   .navbar-item {
     margin: 0px 20px;
@@ -130,33 +161,7 @@ environment variables for aws
     max-height: 40px;
   }
 }
-@media screen and(max-width: 970) {
-   .navbar-item {
-    margin: 0px 20px;
 
-    padding-right: 30px;
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 9px;
-    background-color: #00adee;
-    max-height: 3em;
-    margin: 0.3em 0.3em;
-    color: white;
-    text-transform: uppercase;
-    font-size: large;
-    white-space: nowrap;
-    margin-top: 15px;
-    height: 20px;
-  }
-
-  .navbar-icon {
-    max-width: 150px;
-  }
-  .navbar-brand {
-    max-height: 40px;
-  }
-}
 
 @media screen and (max-width: 895px) {
   #app {
@@ -213,7 +218,6 @@ environment variables for aws
       white-space: nowrap;
       padding-top: 10px;
       padding-bottom: 10px;
-
       margin-top: 15px;
       height: 20px;
     }
@@ -226,7 +230,6 @@ environment variables for aws
         padding-top: 25px;
 
     }
-
     .navbar-icon {
       max-width: 95px;
     }

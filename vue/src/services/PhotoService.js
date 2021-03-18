@@ -20,6 +20,7 @@ export default {
   list() {
     return http.get('/photofeed');
   },
+  
   listByUserId(userId) {
     return http.get(`/photos/users/${userId}`);
   },
