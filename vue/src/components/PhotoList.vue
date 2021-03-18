@@ -62,10 +62,13 @@ export default {
 }
 .tag.is-success {
   background-color: #8cc63f;
+  font-size: large;
+  font-weight: bold;
 }
 .like {
   display: flex;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  
 }
 </style>

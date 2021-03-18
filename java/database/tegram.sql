@@ -70,6 +70,28 @@ CREATE TABLE likes (
 	date_time timestamp,
 	PRIMARY KEY(user_id, photo_id)
 );
+COMMIT TRANSACTION;
+select * from photo;
+
+select * from likes;
+Insert into likes (photo_id, user_id, date_time) values (75, 6, '2021-03-11 22:57:33');
+
+GRANT ALL
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_owner;
+
+GRANT ALL
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_owner;
+
+
+GRANT SELECT, INSERT, UPDATE, DELETE
+ON ALL TABLES IN SCHEMA public
+TO final_capstone_appuser;
+
+GRANT USAGE, SELECT
+ON ALL SEQUENCES IN SCHEMA public
+TO final_capstone_appuser;
 
 CREATE TABLE favorites (
 	photo_id int NOT NULL,

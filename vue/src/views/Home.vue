@@ -71,7 +71,7 @@ export default {
         /*
            gather the photo metadata (photo_id, fileName, link, caption)
            the following consts gives us each part of the data to send to our database.
-           user ID from VUEX store--gets our current user -- see in inspect window, it return a user id
+           user ID from VUEX store--gets our current user -- see in inspect window, it returns a user id
           */
         const userId = this.$store.state.user.id;
         // fileName
