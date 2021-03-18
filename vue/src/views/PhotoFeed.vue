@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     getPhotos() {
-      console.log("query = ", this.$route.query);
+     // console.log("query = ", this.$route.query);
       let photoPromise;
 
       if(this.$route.query.userId) {

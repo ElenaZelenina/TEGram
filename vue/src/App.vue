@@ -6,6 +6,7 @@
         
         <router-link
           v-bind:to="{ name: 'home' }"
+          v-if="$store.state.token != ''"
           class="navbar-item"
           >Upload Photo</router-link
         >
@@ -16,6 +17,7 @@
         >
         <router-link 
           v-bind:to="{ name: 'favorites' }" 
+          v-if="$store.state.token != ''"
           class="navbar-item"
           >Favorites</router-link
         >
