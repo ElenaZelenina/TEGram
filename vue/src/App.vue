@@ -4,12 +4,14 @@
       <img class="navbar-brand" src="../public/mark-blue.jpg" alt="logo" />
       <div class="navbar">
         <router-link v-bind:to="{ name: 'home' }" class="navbar-item"
+        v-if="$store.state.token != ''"
           >Upload Photo</router-link
         >
         <router-link v-bind:to="{ name: 'photo-feed' }" class="navbar-item"
           >Photos</router-link
         >
         <router-link v-bind:to="{ name: 'favorites' }" class="navbar-item"
+        v-if="$store.state.token != ''"
           >Favorites</router-link
         >
 

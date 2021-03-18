@@ -1,5 +1,8 @@
 <template>
-  <photo-list v-bind:photos="photos" v-bind:username="username" class="photolist"></photo-list>
+  <div>
+    <h1 class="title" v-show="!username">Photo Feed</h1>
+    <photo-list v-bind:photos="photos" v-bind:username="username" class="photolist"></photo-list>
+  </div>
 </template>
 
 <script>
@@ -31,7 +34,7 @@ export default {
   },
   methods: {
     getPhotos() {
-      console.log("query = ", this.$route.query);
+     // console.log("query = ", this.$route.query);
       let photoPromise;
 //  jQuery object with a $ (document.querySelector)
       if(this.$route.query.userId) {
@@ -54,3 +57,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+h1 {
+  text-align: right;
+  color: #8cc63f;
+  margin-right: 2rem;
+}
+</style>

@@ -1,5 +1,8 @@
 <template>
-  <photo-list v-bind:photos="photos" class="photolist"></photo-list>
+  <div>
+    <h1 class="title">Favorites</h1>
+    <photo-list v-bind:photos="photos" class="photolist"></photo-list>
+  </div>
 </template>
 
 <script>
@@ -33,3 +36,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+h1 {
+  text-align: right;
+  color: #8cc63f;
+  margin-right: 2rem;
+}
+</style>
