@@ -1,5 +1,8 @@
 <template>
-  <photo-list v-bind:photos="photos" v-bind:username="username" class="photolist"></photo-list>
+  <div>
+    <h1 class="title" v-show="!username">Photo Feed</h1>
+    <photo-list v-bind:photos="photos" v-bind:username="username" class="photolist"></photo-list>
+  </div>
 </template>
 
 <script>
@@ -54,3 +57,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+h1 {
+  text-align: right;
+  color: #8cc63f;
+  margin-right: 2rem;
+}
+</style>

@@ -40,7 +40,7 @@ export default {
 <style scoped>
 h1 {
   text-align: right;
-  color: #00adee;
+  color: #8cc63f;
   margin-right: 2rem;
 }
 </style>

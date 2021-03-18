@@ -1,6 +1,7 @@
 <template>
   <div class="list">
-    <b-tag class="username" type="is-success" size="is-large" v-show="username">{{ username }}</b-tag>
+<!--    <b-tag class="title" type="is-success" size="is-large" v-show="username">Photo Feed</b-tag> -->
+    <h1 class="title" v-show="username">{{ username }}'s Photos</h1>
     <section class="photolist">
       <div v-for="photo in photos" v-bind:key="photo.id">
         <router-link v-bind:to="'/photo/' + photo.id">
@@ -15,8 +16,8 @@
         </router-link>
         <div v-show="photo.commentUsername" class="comment">
           <div class="author">
-            Most recent comment by <strong>{{ photo.commentUsername }}</strong> on
-            <strong>{{ photo.commentDateTime | formatDate}}</strong>
+            Most recent comment by {{ photo.commentUsername }} on
+            {{ photo.commentDateTime | formatDate}}
           </div>
           {{ photo.message }}
         </div>
@@ -40,7 +41,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-gap: 2rem;
-  margin: 0 2rem 2rem 2rem;
+  padding: 0 1rem 1rem 1rem;
 }
 .comment {
   padding: 8px;
@@ -70,6 +71,10 @@ export default {
   display: flex;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  
+}
+h1 {
+  text-align: right;
+  color: #8cc63f;
+  margin-right: 2rem;
 }
 </style>

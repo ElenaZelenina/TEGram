@@ -19,7 +19,7 @@
 
     <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
       <div class="author">
-        Comment by <strong>{{ comment.username }}</strong> on <strong>{{ comment.dateTime | formatDate }}</strong>
+        Comment by {{ comment.username }} on {{ comment.dateTime | formatDate }}
       </div>
       {{ comment.message }}
     </div>
