@@ -19,7 +19,7 @@
 
     <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
       <div class="author">
-        Comment by {{ comment.username }} on {{ comment.dateTime }}
+        Comment by <strong>{{ comment.username }}</strong> on <strong>{{ comment.dateTime | formatDate }}</strong>
       </div>
       {{ comment.message }}
     </div>
@@ -88,7 +88,7 @@ export default {
   created() {
     this.photoId = this.$route.params.id;
     this.retrievePhoto();
-  },
+  }
 };
 </script>
 

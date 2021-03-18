@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 
+import moment from 'moment';
+
 library.add(fas, far);
 
 Vue.component('vue-fontawesome', FontAwesomeIcon)
@@ -18,6 +20,12 @@ Vue.use(Buefy, {
   defaultIconComponent: "vue-fontawesome",
   defaultIconPack: "fas"
 })
+
+Vue.filter('formatDate', function(value) {
+  if (value) {
+      return moment(String(value)).format('MM/DD/YYYY')
+  }
+});
 
 Vue.config.productionTip = false
 

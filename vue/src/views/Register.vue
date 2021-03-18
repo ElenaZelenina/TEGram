@@ -100,6 +100,9 @@ export default {
 #register {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-bottom: 10rem;
 }
 
 a {

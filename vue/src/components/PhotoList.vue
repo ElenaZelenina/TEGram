@@ -15,8 +15,8 @@
         </router-link>
         <div v-show="photo.commentUsername" class="comment">
           <div class="author">
-            Most recent comment by {{ photo.commentUsername }} on
-            {{ photo.commentDateTime }}
+            Most recent comment by <strong>{{ photo.commentUsername }}</strong> on
+            <strong>{{ photo.commentDateTime | formatDate}}</strong>
           </div>
           {{ photo.message }}
         </div>
@@ -36,6 +36,7 @@ export default {
 </script>
 <style scoped>
 .photolist {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-gap: 2rem;
