@@ -33,7 +33,7 @@ export default {
     getPhotos() {
       console.log("query = ", this.$route.query);
       let photoPromise;
-
+//  jQuery object with a $ (document.querySelector)
       if(this.$route.query.userId) {
         // get username
         photoService.getUsername(this.$route.query.userId).then((response) => {

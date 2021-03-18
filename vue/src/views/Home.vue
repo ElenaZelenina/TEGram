@@ -64,6 +64,9 @@ export default {
       this.$refs.file.click();
     },
 
+/* uploaded photo to s3, s3 gave the url address to s3 api for the photo
+/get back response.
+*/
     async submitFile() {
       try {
         // upload this photo to S3
@@ -76,8 +79,8 @@ export default {
         const userId = this.$store.state.user.id;
         // fileName
         const fileName = this.files[0].name;
-        // get the S3 link from the response
-        // inspect: link shows url +? and then more binary. parse
+        // S3 api: get the S3 link from the response
+        // inspect: link shows url +? and then more chars. parsed at ? to get aws url to picture
         const link = s3Resp.config.baseURL.split("?")[0];
         const caption = this.caption;
 
@@ -103,10 +106,18 @@ export default {
 
     handleFileUpload(event) {
       //console.log('event', event)
-      this.files = event.target.files;
+      this.files = event.target.files; // the file array from the file selection event
+
+      // find the dom element representing the imageview
       const imageView = document.getElementById("imageView");
+
+      // setting the imageview src to a constructed url that represents the first selected file
+      //  this cause the browser to "upload" this file, and show it in the imageview
       imageView.src = URL.createObjectURL(this.files[0]);
+
+      // now bind a listener to listen for the loaded event
       imageView.onLoad = () => {
+        // free the constructed url to avoid memory leak
         URL.revokeObjectURL(output.src);
       };
     },
