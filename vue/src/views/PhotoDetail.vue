@@ -108,6 +108,7 @@ h2 {
 .tags {
   display: flex;
   justify-content: space-between;
+  
 }
 .button.is-success {
   background-color: #8cc63f;
