@@ -1,3 +1,4 @@
+<!--
 <template>
   <div class="comments">
     <h2>Photo Details</h2>
@@ -18,3 +19,6 @@ export default {
 
 <style scoped>
 </style>
+
+
+--~>

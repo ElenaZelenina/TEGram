@@ -27,6 +27,18 @@
 </template>
 
 <script>
+/* 
+line 12 is the query that will show the link for a particular user. If you go to app.view
+you'll see there's a link to the photos (photofeed). It's a link to the /Photos without any
+filter. Then got to PhotoDetail.vue and line 12 is a link. takes you to the same component as 
+photoFeed but instead it's just showing you the photos of a particular user. We go through
+the service and the service calls the backend
+/? is an http construct. and http url consists of begins with protocol http// then server localhost:8080
+// then relative url or path inside of the server. AFter the path, there's a question mark that
+allows for query variables. A = B. if there's more than one you'd go /photos?userId= &'
+Sends a request of a specific protocol to a specific server , and pass in additional information to that
+url. Then we appended the userId to get what we were looking for. Think of it as a name value pair.
+*/
 import photoService from "../services/PhotoService";
 
 export default {
@@ -62,6 +74,7 @@ export default {
         });
       }
     },
+    //this is for retrieving a single photo. Get of a single photo
     retrievePhoto() {
       photoService.get(this.photoId).then((response) => {
         this.caption = response.data.caption;

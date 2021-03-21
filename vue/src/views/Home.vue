@@ -56,7 +56,20 @@ export default {
         Submits the file to the server
         async chains promises - calls a chain
         of then functions, returns promise in the callbacks
-        in the then function
+        in the then functionS3Service.js
+        
+        WHEN WE HIT SUBMIT: IN services/S3Service.js
+         // creates a URL which is presigned to accept
+            // an HTTP put that contains that file.
+            return photoService.getPresignedUrl(`${username}/${file.name}`, file.type)
+                .then((response) => {
+                    //all we're doing inside here getting back that final URL
+                    // of the Picture(in view/Home.vue)
+                    const http = axios.create({
+                        
+                        baseURL: response.data,
+                    });
+                    delete http.defaults.headers.common['Authorization'];
       */
 
     // calls the file click above
@@ -108,7 +121,12 @@ export default {
       //console.log('event', event)
       this.files = event.target.files; // the file array from the file selection event
 
-      // find the dom element representing the imageview
+      // find the dom element representing the imageview--this is what we want to upload
+      // browser javascript for finding elementById. It represents the root of the
+      // document. The DOM model for that page.
+      // HTML page is parsed into a structure in memory called DOM(Document Object Model)
+      // Tree-like heirarchal structure starting at the root element (URL), containing
+      // 2 children: the head and the body. In the body, you have all of those elements.
       const imageView = document.getElementById("imageView");
 
       // setting the imageview src to a constructed url that represents the first selected file

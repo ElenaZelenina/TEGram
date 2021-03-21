@@ -21,7 +21,8 @@ export default {
   list() {
     return http.get('/photofeed');
   },
-  // template literal allows uus to mix code with text to produce text. an expression  
+  // template literal allows us to mix code with text to produce text. 
+  // an expression  
   listByUserId(userId) {
     return http.get(`/photos/users/${userId}`);
   },

@@ -14,7 +14,7 @@
         v-if="$store.state.token != ''"
           >Favorites</router-link
         >
-
+        
         <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"

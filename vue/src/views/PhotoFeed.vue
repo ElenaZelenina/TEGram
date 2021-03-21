@@ -37,6 +37,10 @@ export default {
      // console.log("query = ", this.$route.query);
       let photoPromise;
 //  jQuery object with a $ (document.querySelector)
+// based upon the query--we used the query parameter so that if we're giving the
+// userId, we're only going to fetch the photos for that user, that belong to 
+// that user.
+// This allows the query parameter to act as a filter.
       if(this.$route.query.userId) {
         // get username
         photoService.getUsername(this.$route.query.userId).then((response) => {
@@ -44,6 +48,7 @@ export default {
         });
         photoPromise = photoService.listByUserId(
           this.$route.query.userId);
+          // otherwise, we're gonna fetch a list of all photos
       } else {
         this.username = '';
         photoPromise = photoService.list();
