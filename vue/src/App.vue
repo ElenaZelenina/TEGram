@@ -14,7 +14,6 @@
         v-if="$store.state.token != ''"
           >Favorites</router-link
         >
-
         <router-link
           v-bind:to="{ name: 'logout' }"
           v-if="$store.state.token != ''"
@@ -163,7 +162,6 @@ environment variables for aws
     max-height: 40px;
   }
 }
-
 
 @media screen and (max-width: 895px) {
   #app {

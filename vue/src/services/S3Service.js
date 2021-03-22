@@ -19,15 +19,12 @@ export default {
                     });
                     delete http.defaults.headers.common['Authorization'];
 
-
                     return http.put("", file, {
                         headers: {
                             'Content-Type': file.type,
                         }
                     });
                 })
-
         }
-
     }
 }
