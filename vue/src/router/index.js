@@ -8,8 +8,7 @@ import store from '../store/index'
 import Carousel from '../components/Carousel'
 import PhotoFeed from '../views/PhotoFeed'
 import PhotoDetail from '../views/PhotoDetail'
-
-import Upload from '../views/Upload.vue'
+import Favorites from '../views/Favorites'
 
 Vue.use(Router)
 
@@ -61,14 +60,7 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    {
-      path: '/upload',
-      name: 'upload',
-      component: Upload,
-      meta: {
-        requiresAuth: true
-      }
-    },
+ 
     {
       path: '/photos',
       name: 'photo-feed',
@@ -85,8 +77,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    
-    
+    {
+      path: '/favorites',
+      name: 'favorites',
+      component: Favorites,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 

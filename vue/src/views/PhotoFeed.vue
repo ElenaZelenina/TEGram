@@ -48,7 +48,7 @@ export default {
         });
         photoPromise = photoService.listByUserId(
           this.$route.query.userId);
-          // otherwise, we're gonna fetch a list of all photos
+          // other wise, we're gonna fetch a list of all photos
       } else {
         this.username = '';
         photoPromise = photoService.list();
